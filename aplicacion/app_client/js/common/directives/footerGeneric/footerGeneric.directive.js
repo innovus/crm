@@ -11,7 +11,7 @@
      * 
     */
     angular
-      .module("tienda")
+      .module("udenar")
       .directive("footerGeneric",footerGeneric);
 
       function footerGeneric(){

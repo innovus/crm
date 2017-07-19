@@ -1,7 +1,7 @@
 (function(){
 
     angular
-      .module("tienda")
+      .module("udenar")
       .service("productoService", productoService);
 
     productoService.$inject=['$http','autenticacion',"CONFIG","$filter"];

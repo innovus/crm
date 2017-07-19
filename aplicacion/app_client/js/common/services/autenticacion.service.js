@@ -12,7 +12,7 @@
      * servicio que permite la comunicacion con el web service de autenticacion
      */
     angular
-    .module("tienda")
+    .module("udenar")
     .service("autenticacion", autenticacion);
 
     autenticacion.$inject= ["$window","$http","CONFIG","$cookieStore","$log"];

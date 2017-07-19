@@ -1,6 +1,6 @@
 (function () {
   angular
-    .module('tienda')
+    .module('udenar')
     .directive('navigation', navigation);
     function navigation(){
         return {

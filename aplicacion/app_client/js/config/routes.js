@@ -1,6 +1,6 @@
 (function(){
     angular
-    .module('tienda')
+    .module('udenar')
     .config(config);
     
     config.$inject=['$routeProvider','$locationProvider'];
