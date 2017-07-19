@@ -9,21 +9,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var uglifyJs= require("uglify-js");
 var fs= require("fs");
-
 var app = express();
 
-var appClientFiles=[
-  'app_client/js/app.js',
-];
-var uglified= uglifyJs.minify(appClientFiles, {compress:false});
-fs.writeFile('public/angular/tienda.min.js', uglified.code, function(err){
-  if(err){
-    console.log(err);
-  }
-  else{
-    console.log("Script generated and saved: tienda.min.js");
-  }
-});
 
 
 // uncomment after placing your favicon in /public
@@ -74,6 +61,6 @@ app.use(function(err, req, res, next) {
     res.json({"error":"error sevidor :("});
 });
 
-console.log("carteraaaa--------------------------------------------");
+console.log("Plan de estudios--------------------------------------------");
 
 module.exports = app;
