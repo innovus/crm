@@ -9,6 +9,16 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
 
+        acuerdo_numero:{
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+
+        fec_acuerdo:{
+            type: DataTypes.DATE,
+            allowNull: false
+        },
+
         acuerdo_tipo:{
             type: DataTypes.STRING(1),
             allowNull: false
