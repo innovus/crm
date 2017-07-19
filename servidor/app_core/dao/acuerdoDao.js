@@ -19,7 +19,6 @@ var findById= function(idAcuerdo){
 
 var create= function(acuerdo){
     return Models.Acuerdo.create({
-        id_acuerdo:acuerdo.id_acuerdo,
         id_programa:acuerdo.id_programa,
         acuerdo_tipo:acuerdo.acuerdo_tipo,
         fec_inicial:acuerdo.fec_inicial,

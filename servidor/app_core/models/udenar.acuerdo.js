@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
         id_acuerdo:{
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: false,
+            autoIncrement: true,
             allowNull: false
         },
 

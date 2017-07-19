@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
         },
 
         id_acuerdo:{
-            type: DataTypes.STRING(1),
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         acuerdo_periodo_tipo:{
@@ -20,13 +20,13 @@ module.exports = function(sequelize, DataTypes) {
 
         
         numero_periodo:{
-            type: DataTypes.STRING(4),
-            allowNull: true
+            type: DataTypes.INTEGER,
+            allowNull: false
         },
 
         acuerdo_periodo_vigente:{
             type: DataTypes.STRING(1),
-            allowNull: true,
+            allowNull: false,
         },
 
         
@@ -38,8 +38,9 @@ module.exports = function(sequelize, DataTypes) {
         tableName: 'acuerdo_periodo',
         classMethods: {
             associate: function(models) {
-               // models.Acuerdo.belongsTo(models.Acuerdo, {'foreignKey':'id_acuerdo', 'as':"idacuerdoperiodo"});
-                models.Acuerdo.hasMany(models.AcuerdoPeriodo, {'foreignKey':'id_acuerdo_periodo', 'as':"idacuerdoperiodocargaasignatura"});
+                models.AcuerdoPeriodo.belongsTo(models.Acuerdo, {'foreignKey':'id_acuerdo', 'as':"idacuerdoperiodo"});
+                 models.AcuerdoPeriodo.hasMany(models.CargaAsignatura, {'foreignKey':'id_acuerdo_periodo', 'as':"idcargaasignatura"});
+                //models.Acuerdo.hasMany(models.AcuerdoPeriodo, {'foreignKey':'id_acuerdo_periodo', 'as':"idacuerdoperiodocargaasignatura"});
                 
                 
             }

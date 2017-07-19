@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
         id_carga_asignatura:{
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: false,
+            autoIncrement: true,
             allowNull: false
         },
 
@@ -14,32 +14,16 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         id_asignatura:{
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         credito:{
             type: DataTypes.INTEGER,
-            allowNull: true
-        },
-
-        hora_practica:{
-            type: DataTypes.FLOAT,
             allowNull: false
-        },
-
-        hora_periodo:{
-            type: DataTypes.FLOAT,
-            allowNull: false
-        },
-        carga_asignatura_tipo:{
-            type: DataTypes.STRING,
-            allowNull: false
-
-        },
-
+        },       
         carga_asignatura_vigente:{
             type: DataTypes.STRING(1),
-            allowNull: true,
+            allowNull: false,
         },
 
         
@@ -53,6 +37,8 @@ module.exports = function(sequelize, DataTypes) {
             associate: function(models) {
                 //models.Acuerdo.belongsTo(models.Acuerdo, {'foreignKey':'id_acuerdo_periodo', 'as':"idacuerdoperiodocargaasignatura"});
                 models.Requisito.belongsToMany(models.CargaAsignatura,{through: 'RequisitoCargaAsignatura'});
+                models.CargaAsignatura.belongsTo(models.AcuerdoPeriodo, {'foreignKey':'id_acuerdo_periodo', 'as':"idcargaasignatura"});
+                models.CargaAsignatura.hasMany(models.IntensidadHoraria, {'foreignKey':'id_carga_asignatura', 'as':"idintensidadhoraria"});
                 
             }
         }
