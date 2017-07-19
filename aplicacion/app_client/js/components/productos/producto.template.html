@@ -1,0 +1,110 @@
+<navigation></navigation>
+<div class="content-wrapper">
+	<div container>
+		<section class="content-header">	
+			<h1>
+				{{'gestion_producto' | translate}}
+			</h1>
+		</section>
+		<section class="content">
+		
+			<div class="row" ng-show="!hm.esCrear">
+				<div class="col-xs-12 col-sm-8">
+
+					<form>
+						<div class="form-group">
+							<div class="col-sm-6">
+								<a ng-show="hm.isLoggedIn" ng-click="hm.toggleForm()" class="btn btn-primary pull-left">
+									<i class="fa fa-plus-circle" aria-hidden="true"></i> {{'crear_producto' | translate}}
+								</a>
+								<a ng-hide="hm.isLoggedIn" href="/#/login?page={{ hm.currentPath }}" class="btn btn-default pull-left">{{'logueate' | translate}}</a>
+							</div>
+							<div class="col-sm-6">
+								<input type="text" ng-model="hm.search" class="form-control" placeholder='{{"buscar_placehoder" | translate}}'>
+							</div>
+						</div>
+					</form>	
+					<div class="col-sm-12 contenedor-table">	
+						<table class="table table-stripped">
+							<thead>
+								<th class="text-center" ng-click="hm.sort('id_producto')">{{"identificador" | translate}}</th>
+								<th class="text-center" ng-click="hm.sort('nombre_producto')">{{"nombre_producto" | translate}}</th>
+								<th class="text-center" ng-click="hm.sort('id_marca')">{{"nombre_marca" | translate}}</th>
+								<th class="text-center" ng-click="hm.sort('cantidad')">{{"cantidad_producto" | translate}}</th>
+								<th class="text-center" ng-click="hm.sort('valor')">{{"valor_producto" | translate}}</th>
+								<th></th>
+							</thead>
+							<tbody>
+								<tr dir-paginate="item in hm.lstProducto| filter:hm.search | orderBy:hm.sortKey:hm.reverse | itemsPerPage:5">
+									<td>{{item.id_producto}}</td>
+									<td>{{item.nombre_producto}}</td>
+									<td>{{item.marca.nom_marca}}</td>
+									<td>{{item.cantidad}}</td>
+									<td>{{item.valor}}</td>
+									<td>
+										<a href="/#/detalle/{{item.id_producto}}" class="btn btn-xs btn-info"><i class="fa fa-eye" aria-hidden="true"></i></a>
+										<button class="btn btn-xs btn-default" ng-click="hm.abrirEditarModal(item)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+										<button class="btn btn-xs btn-danger" ng-click="hm.eliminar(item.id_producto)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+									</td>
+								</tr>
+							</tbody>					    
+						</table>
+
+						<dir-pagination-controls
+							max-size="5"
+							direction-links="true"
+							boundary-links="true">
+						</dir-pagination-controls>
+					</div>	
+
+				</div>
+			</div>
+
+			<div class="row" ng-show="hm.esCrear">
+				<div class="col-sm-12">
+					<h2>{{'crear_nuevo_titulo' | translate}}</h2>
+					<form ng-submit="onSubmit()">
+						<div role="alert" ng-show="formError" class="alert alert-danger">{{ formError }}</div>
+						<div class="form-group">
+							<label for="nombre_producto">{{"nombre_producto" | translate}}</label>
+							<input type="text" class="form-control" id="nombre_producto" placeholder="Nombres" ng-model="hm.producto.nombre_producto">
+						</div>
+						<div class="form-group">
+							<label for="cantidad">{{"cantidad_producto" | translate}}</label>
+							<input type="text" class="form-control" id="cantidad" placeholder="cantidad" ng-model="hm.producto.cantidad">
+						</div>
+						<div class="form-group">
+							<label for="valor">{{"valor_producto" | translate}}</label>
+							<input type="text" class="form-control" id="valor" placeholder="valor" ng-model="hm.producto.valor">
+						</div>
+						<div class="form-group">
+							<label for="cmbMarca">{{"nombre_marca" | translate}}</label>
+							<select id="cmbMarca" class="form-control"
+								ng-model="hm.producto.id_marca"
+								ng-options="item.id_marca as item.nom_marca for item in hm.lstMarcas">
+							</select>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-4">
+								<div class="col-sm-6">
+									<button ng-click="hm.crearProducto()" class="btn btn-success pull-right">
+										<i class="fa fa-check" aria-hidden="true"></i>
+										{{"btn_crear" | translate}}
+									</button>
+								</div>
+								<div class="col-sm-6">
+									<button ng-click="hm.toggleForm()" class="btn btn-danger pull-left">
+										<i class="fa fa-times" aria-hidden="true"></i> 
+										{{"btn_cancelar" | translate}}
+									</button>
+								</div>
+							</div>		
+						</div>
+						
+					</form>	
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
+<footer-generic></footer-generic>			

@@ -1,0 +1,40 @@
+<div class="modal-content">
+    <form id="addReview" name="addReview" role="form" ng-submit="mec.onSubmit()">
+        <div class="modal-header">
+            <button type="button" ng-click="mec.modal.cancel()" class="close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 id="myModalLabel" class="modal-title">{{"editar_producto_titulo" | translate}} {{mec.producto.id_producto}}</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="nomProducto">{{"nombre_producto" | translate}}</label>
+                <input type="text" class="form-control" id="nomProducto" ng-model="mec.producto.nombre_producto"/>
+            </div>
+            <div class="form-group">
+                <label for="cantidad">{{"cantidad_producto" | translate}}</label>
+                <input type="text" class="form-control" id="cantidad" ng-model="mec.producto.cantidad"/>    
+            </div>
+            <div class="form-group">
+                <label for="cmbMarca">{{"nombre_marca" | translate}}</label>
+                <select id="cmbMarca" class="form-control"
+                    ng-model="mec.producto.id_marca"
+                    ng-options="item.id_marca as item.nom_marca for item in mec.marcas">
+                </select> 
+            </div>
+            <div class="form-group">
+                <label for="valor">{{"valor_producto" | translate}}</label>
+                <input type="text" class="form-control" id="valor" ng-model="mec.producto.valor"/>    
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            <button ng-click="mec.modal.cancel()" type="button" class="btn btn-danger"> 
+                <i class="fa fa-times" aria-hidden="true"></i> 
+                {{"btn_cancelar" | translate}}
+            </button>
+            <button type="submit" class="btn btn-success">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                {{"btn_editar" | translate}}
+            </button>
+        </div>
+    </form>
+</div>
