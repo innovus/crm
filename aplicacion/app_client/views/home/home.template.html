@@ -15,16 +15,25 @@
 					<div class="box box-success">
 						<div class="box-header with-border">
 							<h3 class="box-title">Acuerdo</h3>
+
+							<div class="box-tools pull-right">
+								<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+								<!-- In box-tools add this button if you intend to use the contacts pane -->
+      							
+    						</div>
+
 						</div>
+
+
 					
 					<form class="form-horizontal">
 						<div class="box-body">
 
 							<div class="form-group">
-							<label for="inputEmail" class="col-sm-2 control-label">Acuerdo Numero</label>
+							<label  class="col-sm-2 control-label">Acuerdo Numero</label>
 
 								<div class="col-sm-3">
-									<input type="text" class="form-control" name="" placeholder="No Acuerdo">
+									<input ng-model="acuerdo.num_acuerdo" type="text" class="form-control" name="" placeholder="No Acuerdo">
 									
 								</div>
 
@@ -34,46 +43,108 @@
 										<i class="fa fa-calendar"></i>
 										
 									</div>
-									<input type="text" class="form-control" id="datepicker" placeholder="Fecha Acuerdo">
+									<input type="date" ng-model="acuerdo.fec_acuerdo" class="form-control" id="datepicker" placeholder="Fecha en que se firma el acuerdo">
 									
 								</div>
 								
 							</div>
 
 							<div class="form-group">
+							<label  class="col-sm-2 control-label">Tipo de Acuerdo</label>
+
+								<div class="col-sm-3">
+									<select class="form-control" ng-model="acuerdo.acuerdo_tipo">
+                    					<option value="T">Transsicional</option>
+                    					<option value="N">Normal</option>
+                    				</select>
+									
+								</div>
+
+							<label for="inputEmail" class="col-sm-2 control-label">Fecha de Inicio</label>
+								<div class="col-sm-4 input-group date" >
+									<div class="input-group-addon">
+										<i class="fa fa-calendar"></i>
+										
+									</div>
+									<input type="date" ng-model="acuerdo.fec_inicio" class="form-control" id="datepicker" placeholder="Fecha en que inicia el acuerdo">
+									
+								</div>
 								
 							</div>
-							<div class="form-group"></div>
+
+							<div class="form-group">
+							<label  class="col-sm-2 control-label">Vigente</label>
+
+								<div class="col-sm-3">
+									<select ng-model="acuerdo.acuerdo_vigente" class="form-control">
+                    					<option value="S">Si</option>
+                    					<option value="N">No</option>
+                    				</select>
+									
+								</div>
+
+							<label for="inputEmail" class="col-sm-2 control-label">Fecha de Fin</label>
+								<div class="col-sm-4 input-group date" >
+									<div class="input-group-addon">
+										<i class="fa fa-calendar"></i>
+										
+									</div>
+									<input type="date" class="form-control"  ng-model="acuerdo.fec_final" id="datepicker" placeholder="Fecha en que el acuerdo finaliza">
+									
+								</div>
+								
+							</div>
+
 						</div>
 						<div class="box-footer">
-						<button type="submit" class="btn btn-default">Cancelar</button>
-						<button type="submit" class="btn btn-info pull-right">Guardar</button>
+						<button type="cancel" ng-click="limpiarAcuerdo()" class="btn btn-default">Cancelar</button>
+						<button type="submit" ng-click="crearAcuerdo()" class="btn btn-primary pull-right">Guardar</button>
 							
 						</div>
 						
 					</form>
 					</div>
 				</div>
+				<!-- Cierra agregar acuerdo -->
+
+
+
+
+				<div class="col-md-12">
+					<div class="box box-success">
+						<div class="box-header with-border">
+							<h3 class="box-title">Semestres</h3>
+						</div>
+					
+					<div class="form-horizontal">
+						<div class="box-body">
+
+							<div class="form-group">
+							<label  class="col-sm-2 control-label">Semestre Nº</label>
+
+								<div class="col-sm-3">
+									<input ng-model="acuerdo.num_acuerdo" type="text" class="form-control" name="" placeholder="Ejemplo: 1,2,3,4,">
+									
+								</div>
+
+								<div class="col-sm-5 input-group date" >
+								<button type="cancel" ng-click="limpiarAcuerdo()" class="btn btn-success">Agregar</button>
+									
+								</div>
+								
+							</div>
+
+
+						</div>	
+					</div> 
+					</div>
+				</div>
+
+
 
 				
 			</div>
-			<!--<div class="col-sm-12">
-				<div class="row">
-					<div class="form-group">
-						<button class="btn btn-primary" ng-click="irProductos()">
-							<i class="fa fa-shopping-bag" aria-hidden="true"></i>
-							Ver Productos
-						</button>
-							
-					</div>
-					<div class="form-group">
-						<button class="btn btn-success" ng-click="irArchivo()">
-							<i class="fa fa-cloud-upload" aria-hidden="true"></i>
-							Subir Archivo
-						</button>
-					</div>
-				</div>
-			</div>-->
+
 			
 		</section>
 	</div>
