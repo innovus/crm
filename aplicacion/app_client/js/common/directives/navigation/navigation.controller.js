@@ -1,5 +1,5 @@
 (function(){
-    angular.module("tienda").controller("navigationCtrl",navigationCtrl);
+    angular.module("udenar").controller("navigationCtrl",navigationCtrl);
 
     navigationCtrl.$inject=["$location","$window", 'autenticacion','$cookieStore','$log','CONFIG'];
 

@@ -1,6 +1,6 @@
 (function(){
     angular
-    .module("tienda")
+    .module("udenar")
     .constant("CONFIG",{
         "http_address": "http://localhost:3000",
         "http_seguridad":"http://190.254.4.19:4000",
