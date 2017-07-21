@@ -18,15 +18,10 @@
 
 							<div class="box-tools pull-right">
 								<button class="btn btn-box-tool" id="btnAcuerdo" data-widget="collapse" >
-								<i class="fa fa-minus" ></i></button>
-								<!-- In box-tools add this button if you intend to use the contacts pane -->
-      							
+								<i class="fa fa-minus" ></i></button>	
     						</div>
 
 						</div>
-
-
-					
 					<form class="form-horizontal">
 						<div class="box-body">
 
@@ -98,8 +93,8 @@
 
 						</div>
 						<div class="box-footer">
-						<button type="cancel" ng-click="limpiarAcuerdo()" class="btn btn-default">Cancelar</button>
-						<button type="submit" ng-click="crearAcuerdo()"  class="btn btn-primary pull-right">Guardar</button>
+							<button type="cancel" ng-click="limpiarAcuerdo()" class="btn btn-default">Cancelar</button>
+							<button type="submit" ng-click="crearAcuerdo()"  class="btn btn-primary pull-right">Guardar</button>
 							
 						</div>
 						
@@ -108,185 +103,217 @@
 				</div>
 				<!-- Cierra agregar acuerdo -->
 
-
-
-
-				<div class="col-md-12" ng-show="acuerdoAgregado">
-					<div class="box box-success ">
+				<div ng-repeat="(periodoIndex, periodo) in periodos" class="col-md-12" >
+					<div class="box box-success">
 						<div class="box-header with-border">
-							<h3 ng-show="periodoAgregado" class="box-title"> {{periodo_tipo}}</h3>
-							<h3 ng-show="!periodoAgregado" class="box-title">Agregar {{periodo_tipo}}</h3>
+							<h3 class="box-title"> {{periodo_tipo}} {{periodo.num_periodo}}</h3>
+							<!--<h3 ng-show="!periodoAgregado" class="box-title">Agregar {{periodo_tipo}}</h3>-->
 							<div class="box-tools pull-right">
 								<button class="btn btn-box-tool" data-widget="collapse" ><i class="fa fa-minus"></i></button>
-								<!-- In box-tools add this button if you intend to use the contacts pane -->
-      							
+								
     						</div>
+
 						</div>
 					
 						<form class="form-horizontal">
+
 						<div class="box-body">
+							<div ng-show="asignaturas" class="row col-sm-12">
+							
+								<table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
 
-							<div class="form-group">
-								<label  class="col-sm-2 control-label">{{periodo_tipo}} Nº</label>
+									<thead>
+									<tr role="row">
 
-								<div class="col-sm-3">
-									<input  type="text" class="form-control" name="" placeholder="Ejemplo: 1,2,3,4,">
-									
-								</div>
-
-								<div ng-show="!periodoAgregado" class="col-sm-5 input-group date" >
-									<button   class="btn btn-success" ng-click="agregarSemestre()">Agregar</button>
-									
-								</div>
-								
-								
+										<th class="col-sm-1">Codigo</th>
+										<th class="col-sm-3">Asignatura</th>
+										<th class="col-sm-1">Intensidad Horaria</th>
+										<th class="col-sm-1">Creditos</th>
+										<th class="col-sm-3">Requisitos</th>
+										<th class="col-sm-3">Corequisitos</th>
+									</tr>
+                					</thead>
+                					<tbody>
+                						<tr role="row" class="odd">
+                  							<td class="sorting_1">102</td>
+                  							<td>Matematicas Generales</td>
+                  							<td>4(P)/3(T)</td>
+                  							<td>2</td>
+                  							<td>Calculo 1</td>
+                  							<td>Primer Semestre</td>
+                						</tr>
+                					</tbody>
+                				</table>	
 							</div>
+
+							<legend ng-show="periodoAgregado">Agregar Asignatura</legend>
 
 							<div ng-show="periodoAgregado">
 								<div class="form-group">
 									<label  class="col-sm-2 control-label">Asignatura</label>
-
 									<div class="col-sm-3">
-										<input  type="text" class="form-control" name="" placeholder="Asignatura">
-									
+										<input  type="text" class="form-control" ng-model="periodo.codNuevaAsignatura" placeholder="Asignatura">
 									</div>
-
 									<label  class="col-sm-2 control-label">Creditos</label>
-
 									<div class="col-sm-3">
-										<input  type="text" class="form-control" name="" placeholder="Cantidad Creditos">
-									
+										<input  type="text" class="form-control" ng-model="periodo.nuevoCredito" placeholder="Cantidad Creditos">
 									</div>
-
-								
 								</div>
 								<div class="contenedor">
 
-								<div class="col-md-12 col-sm-4">
+									<div class="col-md-12 col-sm-4">
 									
-									<legend>
-									Intensidad Horaria
-										
-									</legend>
-									
-									
-								</div>
-
-								<div class="form-group">
-									<div class="col-md-12" >
-									<label  class="col-sm-2 control-label">  </label>
-
-										<button type="submit" ng-click="agregarIntensidadHoraria()" class="btn btn-info"><i class="fa fa-plus"></i></button>
-									
-									</div>
-								</div>
-								<div class="form-group" ng-repeat="intensidad_horaria in intensidades_horarias">
-									<label  class="col-sm-2 control-label">Tipo</label>
-
-									<div class="col-sm-3" ng-model="intensidad_horaria.id_hora_tipo">
-										<select  class="form-control">
-                    						<option value="T">Teoria</option>
-                    						<option value="P">Practica</option>
-                    						<option value="M">Modulo</option>
-                    						<option value="N">Nucleo</option>
-                    					</select>
-									
+										<legend>
+										Intensidad Horaria
+										</legend>
 									</div>
 
-									<label  class="col-sm-2 control-label">Cantidad</label>
+									<div class="form-group">
+										<div class="col-md-12" >
+										<label  class="col-sm-2 control-label">  </label>
 
-									<div class="col-sm-3">
-										<input ng-model="intensidad_horaria.intensidad_horaria_cantidad"  type="text" class="form-control" name="" placeholder="Cantidad Horas Semanales">
+											<button type="submit" ng-click="agregarIntensidadHoraria(periodoIndex)" class="btn btn-info"><i class="fa fa-plus"></i></button>
 									
+										</div>
 									</div>
+									
+									<div class="form-group" ng-repeat="intensidad_horaria in periodo.nuevaAsignatura.intensidades_horarias">
+										<label  class="col-sm-2 control-label">Tipo</label>
 
-									<div class="col-sm-2 input-group date" >
-										<button type="cancel" ng-click="eliminarIntensidadHoraria(intensidad_horaria,$index)" class="btn btn-info"><i class="fa fa-minus"></i></button>
+										<div class="col-sm-3" ng-model="intensidad_horaria.id_hora_tipo">
+											<select  class="form-control">
+                    							<option value="T">Teoria</option>
+                    							<option value="P">Practica</option>
+                    							<option value="M">Modulo</option>
+                    							<option value="N">Nucleo</option>
+                    						</select>
 									
-									</div>
+										</div>
+
+										<label  class="col-sm-2 control-label">Cantidad</label>
+
+										<div class="col-sm-3">
+											<input ng-model="intensidad_horaria.intensidad_horaria_cantidad"  type="text" class="form-control" name="" placeholder="Cantidad Horas Semanales">
+									
+										</div>
+
+										<div class="col-sm-2 input-group date" >
+											<button type="cancel" ng-click="eliminarIntensidadHoraria(periodoIndex,$index)" class="btn btn-info"><i class="fa fa-minus"></i></button>
+									
+										</div>
 								
-								</div> <!-- Cierra form group -->
+									</div> <!-- Cierra form group -->
 									
 								</div><!-- Cierra contenedor -->
 
 								<div class="contenedor">
 									<div class="col-md-12 col-sm-4">
 									
-									<legend>
-									Requisitos
+										<legend>
+										Requisitos
 										
-									</legend>
-									
-									
-								</div>
-
-								<div class="form-group">
-									<div class="col-md-12" >
-									<label  class="col-sm-2 control-label">  </label>
-
-										<button type="submit" ng-click="" class="btn btn-info"><i class="fa fa-plus"></i></button>
-									
+										</legend>
 									</div>
-								</div>
-								<div class="form-group">
-									<label  class="col-sm-2 control-label">Tipo</label>
+									<div class="form-group">
+										<div class="col-md-12" >
+										<label  class="col-sm-2 control-label">  </label>
 
-									<div class="col-sm-3">
-										<select  class="form-control">
-                    					<option value="P">Prerequisito</option>
-                    					<option value="C">Corequisito</option>
-                    					
-                    				</select>
+											<button type="submit" ng-click="agregarRequisito(periodoIndex)" class="btn btn-info"><i class="fa fa-plus"></i></button>
 									
-									</div>
+										</div>
+									</div><!-- Cierra form group -->
 
-									<label  class="col-sm-2 control-label">Tipo</label>
+								<div class="row" ng-repeat="requisito in periodo.nuevaAsignatura.requisitos">
 
-									<div class="col-sm-3">
-										<select class="form-control">
-                    					<option value="S">{{periodo_tipo}}</option>
-                    					<option value="A">Materia</option>
-                    					<option value="A">Otro</option>
+									<div class="col-md-10">
+									<div class="form-group" >
+										<label  class="col-sm-2 control-label">Tipo</label>
 
-                    					</select>
+										<div class="col-sm-4">
+											<select  class="form-control">
+                    							<option value="P">Prerequisito</option>
+                    							<option value="C">Corequisito</option>
+                    						</select>
 									
-									</div>
+										</div>
 
+										<label  class="col-sm-2 control-label">Tipo</label>
+
+										<div class="col-sm-4">
+											<select class="form-control">
+                    							<option value="S">{{periodo_tipo}}</option>
+                    							<option value="A">Materia</option>
+                    							<option value="O">Otro</option>
+                    						</select>
+										</div>
 								
-								</div>
+									</div><!-- Cierra form group -->
+
+									<!-- por materia -->
+									<div class="form-group">
+									
+										<label  class="col-sm-2 control-label">Asignatura</label>
+
+										<div class="col-sm-10">
+											<input  type="text" class="form-control" ng-model="requisito.detalle" name="" placeholder="Asignatura">
+									
+										</div>
+									</div>
+									</div>
+
+									<div class="col-md-1 input-group" >
+											<button  ng-click="eliminarRequisito(periodoIndex,$index)" class="btn btn-info"><i class="fa fa-minus"></i></button>
+										</div>
+									
+								</div><!-- Cirra repetidor-->
 								</div><!-- Cierra contenedor -->
+								<legend></legend>
 
-								<!-- por materia -->
-								<div class="form-group">
-									
-
-									<label  class="col-sm-2 control-label">Asignatura</label>
-
-									<div class="col-sm-8">
-										<input  type="text" class="form-control" name="" placeholder="Asignatura">
-									
-									</div>
-
-
-									<div class="col-sm-2 input-group date" >
-										<button type="cancel" ng-click="" class="btn btn-info"><i class="fa fa-minus"></i></button>
-									
-									</div>
+								<button type="submit" ng-click="guardarAsignatura()"  class="btn btn-primary">Guardar Asignatura</button>
 								
-								</div>
-								
-							</div>
+							</div><!--Cierra periodo Agregado-->
 						</div>	
 					</form> 
 					</div> <!-- cierra box-success -->
 				</div><!-- cierra colm12 -->
 
+				<!-- Agregar Periodo-->
 
+				<div class="col-md-12" ng-show="acuerdoAgregado">
+					<div class="box box-success">
+						<div class="box-header with-border">
+							<h3 class="box-title">Agregar {{periodo_tipo}}</h3>
+							<div class="box-tools pull-right">
+								<button class="btn btn-box-tool" data-widget="collapse" ><i class="fa fa-minus"></i></button>
+    						</div>
+							
+						</div>
 
+						<form class="form-horizontal">
+							<div class="box-body">
+								<div  class="form-group">
+									<label  class="col-sm-2 control-label">{{periodo_tipo}} Nº</label>
+
+									<div class="col-sm-3">
+										<input  type="text" class="form-control" ng-model="numNuevoPeriodo" placeholder="Ejemplo: 1,2,3,4,">
+									
+									</div>
+
+									<div  class="col-sm-5 input-group date" >
+										<button class="btn btn-success" ng-click="agregarPeriodo()">Agregar</button>
+									</div>
+								
+								
+								</div> <!-- Cierra form-group -->
+							</div>
+							
+						</form>
+						
+					</div> <!-- cierra agregar box-success-->
+				</div>
+				<!-- cierra agregar periodo -->
 				
-			</div>
-
-			
+			</div>		
 		</section>
 	</div>
 </div>
