@@ -36,7 +36,7 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 //models.Acuerdo.belongsTo(models.Acuerdo, {'foreignKey':'id_acuerdo_periodo', 'as':"idacuerdoperiodocargaasignatura"});
-                models.Requisito.belongsToMany(models.CargaAsignatura,{through: 'RequisitoCargaAsignatura'});
+                models.Requisito.belongsToMany(models.CargaAsignatura,{through: models.RequisitoCargaAsignatura});
                 models.CargaAsignatura.belongsTo(models.AcuerdoPeriodo, {'foreignKey':'id_acuerdo_periodo', 'as':"idcargaasignatura"});
                 models.CargaAsignatura.hasMany(models.IntensidadHoraria, {'foreignKey':'id_carga_asignatura', 'as':"idintensidadhoraria"});
                 

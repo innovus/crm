@@ -10,27 +10,23 @@ module.exports = function(sequelize, DataTypes) {
         },
 
         requisito_tipo:{
-            type: DataTypes.STRING,
-            allowNull: true
+            type: DataTypes.STRING(1),
+            allowNull: false
         },
         id_asignatura:{
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        id_periodo:{
+        id_acuerdo_periodo:{
             type: DataTypes.INTEGER,
             allowNull: true
         },
 
-        observacion_requisito:{
+        requisito_observacion:{
             type: DataTypes.STRING(400),
             allowNull: false
         },
 
-        requisito_vigente:{
-            type: DataTypes.STRING(1),
-            allowNull: true,
-        },
 
         
     }, {
@@ -41,7 +37,7 @@ module.exports = function(sequelize, DataTypes) {
         tableName: 'requisito',
         classMethods: {
             associate: function(models) {
-                models.CargaAsignatura.belongsToMany(models.Requisito,{through: 'RequisitoCargaAsignatura'});
+                models.CargaAsignatura.belongsToMany(models.Requisito,{through: models.RequisitoCargaAsignatura});
                
                 
             }

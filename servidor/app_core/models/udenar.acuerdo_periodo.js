@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
         },
 
         
-        numero_periodo:{
+        num_periodo:{
             type: DataTypes.INTEGER,
             allowNull: false
         },

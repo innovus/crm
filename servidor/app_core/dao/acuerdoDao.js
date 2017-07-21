@@ -12,7 +12,10 @@ var findById= function(idAcuerdo){
     console.log(idAcuerdo)
     
     return Models.Acuerdo.findOne({
-        id_acuerdo: idAcuerdo
+        where: {
+            id_acuerdo: idAcuerdo    
+        }
+        
     });
 };
 

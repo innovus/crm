@@ -11,8 +11,12 @@ var findAll= function(){
 var findById= function(idAcuerdoPeriodo){
     console.log(idAcuerdoPeriodo)
     
-    return Models.AcuerdoPeriodo.findOne({
-        id_acuerdo_periodo: idAcuerdoPeriodo
+    return Models.AcuerdoPeriodo.findAll({
+        include:[{model:Models.Acuerdo, as:"idacuerdoperiodo"}],
+        where: {
+            id_acuerdo_periodo: idAcuerdoPeriodo
+        }
+        
     });
 };
 
@@ -20,7 +24,7 @@ var create= function(acuerdoPeriodo){
     return Models.AcuerdoPeriodo.create({
         id_acuerdo:acuerdoPeriodo.id_acuerdo,
         acuerdo_periodo_tipo:acuerdoPeriodo.acuerdo_periodo_tipo,
-        numero_periodo:acuerdoPeriodo.numero_periodo,
+        num_periodo:acuerdoPeriodo.num_periodo,
         acuerdo_periodo_vigente:acuerdoPeriodo.acuerdo_periodo_vigente
     });
 };
@@ -42,7 +46,7 @@ var update=function(acuerdoPeriodo, identificador){
             resultado.updateAttributes({
                 id_acuerdo:acuerdoPeriodo.id_acuerdo==null?resultado.id_acuerdo:acuerdoPeriodo.id_acuerdo,
                 acuerdo_periodo_tipo:acuerdoPeriodo.acuerdo_periodo_tipo==null?resultado.acuerdo_periodo_tipo:acuerdoPeriodo.acuerdo_periodo_tipo,
-                numero_periodo:acuerdoPeriodo.numero_periodo==null?resultado.numero_periodo:acuerdoPeriodo.numero_periodo,
+                num_periodo:acuerdoPeriodo.num_periodo==null?resultado.num_periodo:acuerdoPeriodo.num_periodo,
                 acuerdo_periodo_vigente:acuerdoPeriodo.acuerdo_periodo_vigente==null?resultado.acuerdo_periodo_vigente:acuerdoPeriodo.acuerdo_periodo_vigente
 
                 

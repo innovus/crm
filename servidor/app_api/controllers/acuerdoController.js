@@ -5,6 +5,7 @@ var Respuesta= require("../helpers/respuesta");
 var Errores= require ("../../app_core/config/errors");
 var AcuerdoDao= require("../../app_core/dao/acuerdoDao");
 var AcuerdoPeriodoDao= require("../../app_core/dao/acuerdo_periodoDao");
+var CargaAsignaturaDao = require("../../app_core/dao/carga_asignaturaDao");
 
 
 
@@ -130,7 +131,27 @@ var deleteAcuerdoPeriodo= function (req, res){
     });
 };
 
-//--------------------------------------
+//----------------------------------------------------------------------------------------
+var listarCargaAsignatura= function(req,res){ 
+
+	CargaAsignaturaDao.findAll().then(function(cargaAsignatura){
+		Respuesta.sendJsonResponse(res,200,cargaAsignatura);
+	}).catch(function(error){
+		Respuesta.sendJsonResponse(res,500,error);
+	});
+  
+};
+
+var findByIdCargaAsignatura= function(req,res){ 
+
+	CargaAsignaturaDao.findById(req.params.id).then(function(cargaAsignatura){
+		Respuesta.sendJsonResponse(res,200,cargaAsignatura);
+	}).catch(function(error){
+		Respuesta.sendJsonResponse(res,500,error);
+	});
+  
+};
+//------------------------------------------------------------------------------------------
 
 
 module.exports.listarAcuerdos=listarAcuerdos;
@@ -146,4 +167,9 @@ module.exports.findByIdAcuerdoPeriodo=findByIdAcuerdoPeriodo;
 module.exports.createAcuerdoPeriodo=createAcuerdoPeriodo;
 module.exports.updateAcuerdoPeriodo=updateAcuerdoPeriodo;
 module.exports.deleteAcuerdoPeriodo=deleteAcuerdoPeriodo;
+
+//----------------------------------------------------------------------------------------------
+
+module.exports.listarCargaAsignatura=listarCargaAsignatura;
+module.exports.findByIdCargaAsignatura=findByIdCargaAsignatura;
 
