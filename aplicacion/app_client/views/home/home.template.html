@@ -12,12 +12,13 @@
 		<section class="content">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="box box-success ">
+					<div class="box box-success " id="acuerdo" >
 						<div class="box-header with-border">
-							<h3 class="box-title">Acuerdo {{numero_acuerdo}}</h3>
+							<h3 class="box-title">Acuerdo {{acuerdo.num_acuerdo}}</h3>
 
 							<div class="box-tools pull-right">
-								<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+								<button class="btn btn-box-tool" id="btnAcuerdo" data-widget="collapse" >
+								<i class="fa fa-minus" ></i></button>
 								<!-- In box-tools add this button if you intend to use the contacts pane -->
       							
     						</div>
@@ -54,7 +55,7 @@
 
 								<div class="col-sm-3">
 									<select class="form-control" ng-model="acuerdo.acuerdo_tipo">
-                    					<option value="T">Transsicional</option>
+                    					<option value="T">Transicional</option>
                     					<option value="N">Normal</option>
                     				</select>
 									
@@ -98,7 +99,7 @@
 						</div>
 						<div class="box-footer">
 						<button type="cancel" ng-click="limpiarAcuerdo()" class="btn btn-default">Cancelar</button>
-						<button type="submit" ng-click="crearAcuerdo()" class="btn btn-primary pull-right">Guardar</button>
+						<button type="submit" ng-click="crearAcuerdo()"  class="btn btn-primary pull-right">Guardar</button>
 							
 						</div>
 						
@@ -110,12 +111,13 @@
 
 
 
-				<div class="col-md-12">
+				<div class="col-md-12" ng-show="acuerdoAgregado">
 					<div class="box box-success ">
 						<div class="box-header with-border">
-							<h3 class="box-title">Semestres</h3>
+							<h3 ng-show="periodoAgregado" class="box-title"> {{periodo_tipo}}</h3>
+							<h3 ng-show="!periodoAgregado" class="box-title">Agregar {{periodo_tipo}}</h3>
 							<div class="box-tools pull-right">
-								<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+								<button class="btn btn-box-tool" data-widget="collapse" ><i class="fa fa-minus"></i></button>
 								<!-- In box-tools add this button if you intend to use the contacts pane -->
       							
     						</div>
@@ -125,21 +127,22 @@
 						<div class="box-body">
 
 							<div class="form-group">
-								<label  class="col-sm-2 control-label">Semestre Nº</label>
+								<label  class="col-sm-2 control-label">{{periodo_tipo}} Nº</label>
 
 								<div class="col-sm-3">
-									<input ng-model="acuerdo.num_acuerdo" type="text" class="form-control" name="" placeholder="Ejemplo: 1,2,3,4,">
+									<input  type="text" class="form-control" name="" placeholder="Ejemplo: 1,2,3,4,">
 									
 								</div>
 
-								<div class="col-sm-5 input-group date" >
-									<button type="cancel" ng-click="limpiarAcuerdo()" class="btn btn-success">Agregar</button>
+								<div ng-show="!periodoAgregado" class="col-sm-5 input-group date" >
+									<button   class="btn btn-success" ng-click="agregarSemestre()">Agregar</button>
 									
 								</div>
 								
+								
 							</div>
 
-							<div>
+							<div ng-show="periodoAgregado">
 								<div class="form-group">
 									<label  class="col-sm-2 control-label">Asignatura</label>
 
@@ -157,17 +160,35 @@
 
 								
 								</div>
-								<h4>Intensidad Horaria</h4>
+								<div class="contenedor">
+
+								<div class="col-md-12 col-sm-4">
+									
+									<legend>
+									Intensidad Horaria
+										
+									</legend>
+									
+									
+								</div>
 
 								<div class="form-group">
+									<div class="col-md-12" >
+									<label  class="col-sm-2 control-label">  </label>
+
+										<button type="submit" ng-click="agregarIntensidadHoraria()" class="btn btn-info"><i class="fa fa-plus"></i></button>
+									
+									</div>
+								</div>
+								<div class="form-group" ng-repeat="intensidad_horaria in intensidades_horarias">
 									<label  class="col-sm-2 control-label">Tipo</label>
 
-									<div class="col-sm-3">
-										<select ng-model="acuerdo.acuerdo_vigente" class="form-control">
-                    					<option value="T">Teoria</option>
-                    					<option value="P">Practica</option>
-                    					<option value="M">Modulo</option>
-                    					<option value="N">Nucleo</option>
+									<div class="col-sm-3" ng-model="intensidad_horaria.id_hora_tipo">
+										<select  class="form-control">
+                    						<option value="T">Teoria</option>
+                    						<option value="P">Practica</option>
+                    						<option value="M">Modulo</option>
+                    						<option value="N">Nucleo</option>
                     					</select>
 									
 									</div>
@@ -175,24 +196,43 @@
 									<label  class="col-sm-2 control-label">Cantidad</label>
 
 									<div class="col-sm-3">
-										<input  type="text" class="form-control" name="" placeholder="Cantidad Horas Semanales">
+										<input ng-model="intensidad_horaria.intensidad_horaria_cantidad"  type="text" class="form-control" name="" placeholder="Cantidad Horas Semanales">
 									
 									</div>
 
 									<div class="col-sm-2 input-group date" >
-										<button type="cancel" ng-click="limpiarAcuerdo()" class="btn btn-info"><i class="fa fa-plus"></i></button>
+										<button type="cancel" ng-click="eliminarIntensidadHoraria(intensidad_horaria,$index)" class="btn btn-info"><i class="fa fa-minus"></i></button>
 									
 									</div>
 								
+								</div> <!-- Cierra form group -->
+									
+								</div><!-- Cierra contenedor -->
+
+								<div class="contenedor">
+									<div class="col-md-12 col-sm-4">
+									
+									<legend>
+									Requisitos
+										
+									</legend>
+									
+									
 								</div>
 
-								<h4>Requisitos</h4>
+								<div class="form-group">
+									<div class="col-md-12" >
+									<label  class="col-sm-2 control-label">  </label>
 
+										<button type="submit" ng-click="" class="btn btn-info"><i class="fa fa-plus"></i></button>
+									
+									</div>
+								</div>
 								<div class="form-group">
 									<label  class="col-sm-2 control-label">Tipo</label>
 
 									<div class="col-sm-3">
-										<select ng-model="acuerdo.acuerdo_vigente" class="form-control">
+										<select  class="form-control">
                     					<option value="P">Prerequisito</option>
                     					<option value="C">Corequisito</option>
                     					
@@ -204,7 +244,7 @@
 
 									<div class="col-sm-3">
 										<select class="form-control">
-                    					<option value="S">Semestre</option>
+                    					<option value="S">{{periodo_tipo}}</option>
                     					<option value="A">Materia</option>
                     					<option value="A">Otro</option>
 
@@ -214,6 +254,7 @@
 
 								
 								</div>
+								</div><!-- Cierra contenedor -->
 
 								<!-- por materia -->
 								<div class="form-group">
@@ -221,14 +262,14 @@
 
 									<label  class="col-sm-2 control-label">Asignatura</label>
 
-									<div class="col-sm-3">
+									<div class="col-sm-8">
 										<input  type="text" class="form-control" name="" placeholder="Asignatura">
 									
 									</div>
 
 
 									<div class="col-sm-2 input-group date" >
-										<button type="cancel" ng-click="limpiarAcuerdo()" class="btn btn-info"><i class="fa fa-plus"></i></button>
+										<button type="cancel" ng-click="" class="btn btn-info"><i class="fa fa-minus"></i></button>
 									
 									</div>
 								

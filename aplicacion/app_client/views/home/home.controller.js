@@ -9,6 +9,13 @@
      // $scope.acuerdo = null;
       var acuerdo_limpio ={acuerdo_vigente:"S",acuerdo_tipo:"N"};
       $scope.acuerdo =acuerdo_limpio;
+      $scope.periodo_tipo ="Semestre";
+      $scope.intensidades_horarias = [{id_hora_tipo:"T",intensidad_horaria_cantidad:0} ]
+      $scope.acuerdoAgregado = false;
+      $scope.periodoAgregado = false;
+
+
+
       $scope.titulo={
         "titulo":"Plan de estudio",
         "subtitulo":"Agregar Plan de estudio"
@@ -17,6 +24,7 @@
 
       //cuando le da en el boton guardar de la parte de acuerdo se guarda el acuerdo
       var crearAcuerdo = function(){
+
         /*
         AcuerdoService.createAcuerdo($scope.acuerdo).success(function(mensaje) {
           console.log(mensaje);
@@ -26,8 +34,30 @@
           console.log(error);
           MensajesService.mensajeAlerta("Se ha guardado el acuerdo correctamente","error");
         });*/
-        console.log($scope.acuerdo)
+        document.getElementById("btnAcuerdo").click();
+        $scope.acuerdoAgregado = true;
+        //console.log($scope.acuerdo)
+
+        //collapseFunction();
       }//cierra crear acuerdo
+
+      var agregarSemestre = function(){
+        $scope.periodoAgregado = true;
+      }
+
+
+      var agregarIntensidadHoraria = function(){
+
+        $scope.intensidades_horarias.push({id_hora_tipo:"T",intensidad_horaria_cantidad:0} );
+       
+      }
+      var eliminarIntensidadHoraria = function(intensidadHoraria,index){
+
+
+        $scope.intensidades_horarias.splice(index, 1);
+        //({id_hora_tipo:"T",intensidad_horaria_cantidad:0} );
+       
+      }
 
       //
       var limpiarAcuerdo = function(){
@@ -45,6 +75,9 @@
        $scope.irArchivo=irArchivo;
        $scope.crearAcuerdo = crearAcuerdo;
        $scope.limpiarAcuerdo= limpiarAcuerdo;
+       $scope.agregarIntensidadHoraria = agregarIntensidadHoraria;
+       $scope.eliminarIntensidadHoraria =eliminarIntensidadHoraria;
+       $scope.agregarSemestre= agregarSemestre;
     }
 
 })();
