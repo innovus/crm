@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
 
-        acuerdo_numero:{
+        num_acuerdo:{
             type: DataTypes.INTEGER,
             allowNull: false
         },

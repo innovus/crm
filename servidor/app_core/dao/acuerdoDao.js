@@ -24,7 +24,7 @@ var create= function(acuerdo){
         fec_inicial:acuerdo.fec_inicial,
         fec_final:acuerdo.fec_final,
         acuerdo_vigente:acuerdo.acuerdo_vigente,
-        acuerdo_numero:acuerdo.acuerdo_numero,
+        num_acuerdo:acuerdo.num_acuerdo,
         fec_acuerdo:acuerdo.fec_acuerdo
     });
 };
@@ -83,8 +83,8 @@ var update=function(acuerdo, identificador){
                 fec_inicial:acuerdo.fec_inicial==null?resultado.fec_inicial:acuerdo.fec_inicial,
                 fec_final:acuerdo.fec_final==null?resultado.fec_final:acuerdo.fec_final,
                 acuerdo_vigente:acuerdo.acuerdo_vigente==null?resultado.acuerdo_vigente:acuerdo.acuerdo_vigente,
-                acuerdo_numero:acuerdo.acuerdo_numero==null?resultado.acuerdo_numero:acuerdo.acuerdo_numero,
-                fec_acuerdo:acuerdo.acuerdo_numero==null?resultado.fec_acuerdo:acuerdo.fec_acuerdo,
+                num_acuerdo:acuerdo.num_acuerdo==null?resultado.num_acuerdo:acuerdo.num_acuerdo,
+                fec_acuerdo:acuerdo.fec_acuerdo==null?resultado.fec_acuerdo:acuerdo.fec_acuerdo,
                 
             }).then(function(acuerdo){
                 deferred.resolve(acuerdo);

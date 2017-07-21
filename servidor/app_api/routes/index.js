@@ -22,6 +22,12 @@ router.post('/acuerdo', AcuerdoController.createAcuerdo);
 router.post('/test',ProductoController.test);
 */
 
+//--------------------------------------------------------
+router.get('/acuerdoperiodo', AcuerdoController.listarAcuerdosPeriodo);
+router.get('/acuerdoperiodo/:acuerdoPeriodo', AcuerdoController.findByIdAcuerdoPeriodo);
+router.post('/acuerdoperiodo', AcuerdoController.createAcuerdoPeriodo);
+router.put('/acuerdoperiodo/:id', AcuerdoController.updateAcuerdoPeriodo);
+router.delete('/acuerdoperiodo/:id', AcuerdoController.deleteAcuerdoPeriodo);
 
 module.exports = router;
 
