@@ -10,9 +10,16 @@
       var acuerdo_limpio ={acuerdo_vigente:"S",acuerdo_tipo:"N"};
       $scope.acuerdo =acuerdo_limpio;
       $scope.periodo_tipo ="Semestre";
-      $scope.intensidades_horarias = [{id_hora_tipo:"T",intensidad_horaria_cantidad:0} ]
+      var intensidades_horarias = [{id_hora_tipo:"T",intensidad_horaria_cantidad:0} ]
+      var requisitos = [{requisito_tipo:"P",periodo_tipo:"S"}]
       $scope.acuerdoAgregado = false;
       $scope.periodoAgregado = false;
+      $scope.asignaturas = false;
+      $scope.asignatura = null;
+      $scope.periodos = [];
+      $scope.numNuevoPeriodo = 1;
+
+
 
 
 
@@ -41,43 +48,57 @@
         //collapseFunction();
       }//cierra crear acuerdo
 
-      var agregarSemestre = function(){
+      var agregarPeriodo = function(){
+        //va y agrega el Periodo a la base de datos
+        intensidades_horarias = [{id_hora_tipo:"T",intensidad_horaria_cantidad:0} ]
+        requisitos = [{requisito_tipo:"P",periodo_tipo:"S"}];
+        var nuevoPeriodo = {acuerdo_periodo_tipo:"S",num_periodo:$scope.numNuevoPeriodo,acuerdo_periodo_vigente:"S",nuevaAsignatura:{intensidades_horarias:intensidades_horarias,requisitos:requisitos}};
+        console.log(nuevoPeriodo);
+        $scope.periodos.push(nuevoPeriodo);
         $scope.periodoAgregado = true;
+        $scope.numNuevoPeriodo = $scope.numNuevoPeriodo + 1;  
+        console.log("el nuevo periodo");
+        console.log($scope.periodos);
+
       }
 
-
-      var agregarIntensidadHoraria = function(){
-
-        $scope.intensidades_horarias.push({id_hora_tipo:"T",intensidad_horaria_cantidad:0} );
-       
+      var agregarIntensidadHoraria = function(parentIndex){
+        console.log(parentIndex);
+        console.log($scope.periodos)
+        $scope.periodos[parentIndex].nuevaAsignatura.intensidades_horarias.push({id_hora_tipo:"T",intensidad_horaria_cantidad:0} );
       }
-      var eliminarIntensidadHoraria = function(intensidadHoraria,index){
 
+      var agregarRequisito = function(parentIndex){
+        $scope.periodos[parentIndex].nuevaAsignatura.requisitos.push({requisito_tipo:"P",periodo_tipo:"S" } );
+    
+      }
 
-        $scope.intensidades_horarias.splice(index, 1);
+      var eliminarIntensidadHoraria = function(parentIndex,index){
+        $scope.periodos[parentIndex].nuevaAsignatura.intensidades_horarias.splice(index,1);
+        
         //({id_hora_tipo:"T",intensidad_horaria_cantidad:0} );
-       
+      }
+      var eliminarRequisito = function(index){
+        $scope.periodos[parentIndex].nuevaAsignatura.requisitos.splice(index,1);
+        //({id_hora_tipo:"T",intensidad_horaria_cantidad:0} ); 
       }
 
+      var guardarAsignatura = function(){
+        //$scope.asignatura = {}
+
+      }
       //
       var limpiarAcuerdo = function(){
         $scope.acuerdo = acuerdo_limpio;
       }//cierra crear acuerdo
 
-       var irProductos= function(){
-          $location.path('/producto');
-       };
-       var irArchivo= function(){
-          $location.path('/subir');
-       }
-
-       $scope.irProductos=irProductos;
-       $scope.irArchivo=irArchivo;
        $scope.crearAcuerdo = crearAcuerdo;
        $scope.limpiarAcuerdo= limpiarAcuerdo;
        $scope.agregarIntensidadHoraria = agregarIntensidadHoraria;
        $scope.eliminarIntensidadHoraria =eliminarIntensidadHoraria;
-       $scope.agregarSemestre= agregarSemestre;
+       $scope.agregarPeriodo= agregarPeriodo;
+      $scope.agregarRequisito= agregarRequisito;
+      $scope.eliminarRequisito =eliminarRequisito;
     }
 
 })();
