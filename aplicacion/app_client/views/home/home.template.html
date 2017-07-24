@@ -93,7 +93,7 @@
 
 						</div>
 						<div class="box-footer">
-							<button type="cancel" ng-click="limpiarAcuerdo()" class="btn btn-default">Cancelar</button>
+							<!--<button type="cancel" ng-click="limpiarAcuerdo()" class="btn btn-default">Cancelar</button>-->
 							<button type="submit" ng-click="crearAcuerdo()"  class="btn btn-primary pull-right">Guardar</button>
 							
 						</div>
@@ -231,8 +231,8 @@
 
 										<div class="col-sm-4">
 											<select  class="form-control">
-                    							<option value="P">Prerequisito</option>
-                    							<option value="C">Corequisito</option>
+                    							<option value="P">Pre-requisito</option>
+                    							<option value="C">Co-requisito</option>
                     						</select>
 									
 										</div>
@@ -240,22 +240,42 @@
 										<label  class="col-sm-2 control-label">Tipo</label>
 
 										<div class="col-sm-4">
-											<select class="form-control">
-                    							<option value="S">{{periodo_tipo}}</option>
-                    							<option value="A">Materia</option>
+											<select class="form-control" ng-model="requisito.requisito_opcion" >
+                    							<option value="P">{{periodo_tipo}}</option>
+                    							<option value="A">Asignatura</option>
                     							<option value="O">Otro</option>
                     						</select>
 										</div>
 								
 									</div><!-- Cierra form group -->
 
-									<!-- por materia -->
-									<div class="form-group">
+									<!-- por asignatura -->
+									<div class="form-group" ng-show="requisito.requisito_opcion == 'A'">
 									
 										<label  class="col-sm-2 control-label">Asignatura</label>
 
 										<div class="col-sm-10">
 											<input  type="text" class="form-control" ng-model="requisito.detalle" name="" placeholder="Asignatura">
+									
+										</div>
+									</div>
+									<!-- por semestre -->
+									<div class="form-group" ng-show="requisito.requisito_opcion == 'P'">
+									
+										<label  class="col-sm-2 control-label">{{periodo_tipo}}</label>
+
+										<div class="col-sm-10">
+											<input  type="text" class="form-control" ng-model="requisito.detalle" name="" placeholder="{{periodo_tipo}}">
+									
+										</div>
+									</div>
+									<!-- por otro -->
+									<div class="form-group" ng-show="requisito.requisito_opcion == 'O'">
+									
+										<label  class="col-sm-2 control-label">Observacion</label>
+
+										<div class="col-sm-10">
+											<input  type="text" class="form-control" ng-model="requisito.detalle" name="" placeholder="Observacion">
 									
 										</div>
 									</div>

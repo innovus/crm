@@ -18,6 +18,7 @@
       $scope.asignatura = null;
       $scope.periodos = [];
       $scope.numNuevoPeriodo = 1;
+     // $scope.opcionRequisitos[{value:"P",opcion:$scope.periodo_tipo},{value:"A",opcion:"Asignatura"},{value:"O",opcion:"Otro"}]
 
 
 
@@ -69,7 +70,7 @@
       }
 
       var agregarRequisito = function(parentIndex){
-        $scope.periodos[parentIndex].nuevaAsignatura.requisitos.push({requisito_tipo:"P",periodo_tipo:"S" } );
+        $scope.periodos[parentIndex].nuevaAsignatura.requisitos.push({requisito_tipo:"P",periodo_tipo:"S",requisito_opcion:"A" } );
     
       }
 
@@ -78,10 +79,15 @@
         
         //({id_hora_tipo:"T",intensidad_horaria_cantidad:0} );
       }
-      var eliminarRequisito = function(index){
+      var eliminarRequisito = function(parentIndex,index){
         $scope.periodos[parentIndex].nuevaAsignatura.requisitos.splice(index,1);
         //({id_hora_tipo:"T",intensidad_horaria_cantidad:0} ); 
       }
+
+     
+
+
+
 
       var guardarAsignatura = function(){
         //$scope.asignatura = {}
@@ -99,6 +105,7 @@
        $scope.agregarPeriodo= agregarPeriodo;
       $scope.agregarRequisito= agregarRequisito;
       $scope.eliminarRequisito =eliminarRequisito;
+   
     }
 
 })();
