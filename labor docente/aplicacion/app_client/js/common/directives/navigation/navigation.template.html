@@ -1,0 +1,98 @@
+<header class="main-header">
+    <!-- Logo -->
+    <a href="/#/" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini">
+            <b>Udenar</b>
+        </span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>Universidad de Nariño</b></span>
+    </a>
+    <nav class="navbar navbar-static-top">
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+          <span class="sr-only">Toggle navigation</span>
+      </a>
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+           <li class="dropdown user user-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="/img/avatar04.png" class="user-image" alt="User Image">
+                <span class="hidden-xs">{{navvm.currentUser.primer_nombre}} {{navvm.currentUser.primer_apellido}}</span>
+              </a>
+              <ul class="dropdown-menu">
+                  <!-- User image -->
+                  <li class="user-header">
+                      <img src="/img/avatar04.png" class="img-circle" alt="User Image">
+
+                      <p>
+                      {{navvm.currentUser.primer_nombre}} {{navvm.currentUser.primer_apellido}}
+                      <small>Identificación: {{navvm.currentUser.numero_documento}}</small>
+                      </p>
+                  </li>
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                      <div class="pull-left">
+                      <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                      </div>
+                      <div class="pull-right">
+                      <a href="#" class="btn btn-default btn-flat" ng-click="navvm.logout()">Cerrar sesión</a>
+                      </div>
+                  </li>
+              </ul>  
+           </li> 
+        
+        </ul>
+      </div>
+    </nav>
+</header>
+
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+    <!-- Sidebar user panel -->
+    <div class="user-panel">
+        <div class="pull-left image">
+        <img src="/img/avatar04.png" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+        <p>{{navvm.currentUser.primer_nombre}} {{navvm.currentUser.primer_apellido}}</p>
+        <small>Identificación: {{navvm.currentUser.numero_documento}}<small>
+        <!--<a href="#"><i class="fa fa-circle text-success"></i> En linea</a>-->
+        </div>
+    </div>
+    <!-- search form -->
+    <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Buscar...">
+            <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+        <li class="header">OPCIONES CARTERA</li>
+        <li ng-repeat="opcion in navvm.opciones" ng-class="{'treeview':opcion.hijos.length>0}">
+            <a href="" ng-if="opcion.hijos.length>0">
+                <i class="fa fa-cog"></i> <span>{{opcion.nombre_opcion}}</span>
+                <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul ng-if="opcion.hijos.length>0" class="treeview-menu">
+                <li ng-repeat="hijo in opcion.hijos">
+                    <a href="{{hijo.ruta}}">{{hijo.nombre_opcion}}</a>
+                </li>
+            </ul>
+
+            <a ng-if="opcion.hijos.length<=0" href="{{opcion.ruta}}">
+                <i class="fa fa-book"></i> 
+                <span>{{opcion.nombre_opcion}}</span>
+            </a>
+        </li>
+    </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

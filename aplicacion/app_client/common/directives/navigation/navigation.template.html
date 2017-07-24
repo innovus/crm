@@ -45,4 +45,36 @@
       </div>
     </nav>
 </header>
-
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+    <!-- Sidebar user panel -->
+    <div class="user-panel">
+        <div class="pull-left image">
+        <img src="/img/avatar04.png" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+        <p>{{navvm.currentUser.primer_nombre}} {{navvm.currentUser.primer_apellido}}</p>
+        <small>Identificación: {{navvm.currentUser.numero_documento}}<small>
+        <!--<a href="#"><i class="fa fa-circle text-success"></i> En linea</a>-->
+        </div>
+    </div>
+    <ul class="sidebar-menu">
+        <li class="header">Programas</li>
+        <li ng-repeat="programa in programas" class="treeview" >
+            <a>
+                <i class="fa fa-cog"></i> <span>{{programa.nom_programa}}</span>
+                <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="#">Ver</a></li>
+              <li><a href="#">Agregar</a></li>
+               
+            </ul>
+        </li>
+    </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

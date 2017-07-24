@@ -123,8 +123,18 @@
         //({id_hora_tipo:"T",intensidad_horaria_cantidad:0} ); 
       }
 
-      var guardarAsignatura = function(){
-        //$scope.asignatura = {}
+      var guardarAsignatura = function(index){
+        if( $scope.periodos[index].asignaturas == null){
+          console.log("entro al if")
+          $scope.periodos[index].asignaturas = [];
+
+        }else{
+          console.log("entro al else")
+
+        }
+        $scope.periodos[index].asignaturas.push( $scope.periodos[index].nuevaAsignatura);
+        $scope.asignaturas = true;
+        
 
       }
       //
@@ -139,6 +149,8 @@
       $scope.agregarPeriodo= agregarPeriodo;
       $scope.agregarRequisito= agregarRequisito;
       $scope.eliminarRequisito =eliminarRequisito;
+      $scope.eliminarRequisito =eliminarRequisito;
+      $scope.guardarAsignatura = guardarAsignatura;
    
     }
 
