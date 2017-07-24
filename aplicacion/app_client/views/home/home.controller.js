@@ -18,7 +18,46 @@
       $scope.asignatura = null;
       $scope.periodos = [];
       $scope.numNuevoPeriodo = 1;
+      $scope.programas=[{cod_programa:"1",nom_programa:"Ingenieria de Sistemas"},{cod_programa:"2",nom_programa:"Ingenieria Civil"},{cod_programa:"3",nom_programa:"Ingenieria Electronica"},]
      // $scope.opcionRequisitos[{value:"P",opcion:$scope.periodo_tipo},{value:"A",opcion:"Asignatura"},{value:"O",opcion:"Otro"}]
+
+     /*json asignatura
+    {
+      id_acuerdo_periodo,
+      id_asignatura:"3445",
+      creditos:10,
+      intensidad_horaria:[{
+        intensidad_horaria_tipo:1,
+        intensidad_horaria_cantidad 4,
+        },{
+          intensidad_horaria_tipo:4,
+          intensidad_horaria_cantidad 5,
+  
+        }
+      ],
+      requisitos:[{
+        requisito_tipo:"P",
+        requisito_opcion:"A",
+        requisito_detalle:"3445"
+      },
+      {
+        requisito_tipo:"P",
+        requisito_opcion:"P",
+        requisito_detalle:"1"
+      },
+      {
+        requisito_tipo:"P",
+        requisito_opcion:"O",
+        requisito_detalle:"Minimo 8 materias del semestre 4"
+      }]
+
+
+    }
+
+
+
+     */
+
 
 
 
@@ -84,11 +123,6 @@
         //({id_hora_tipo:"T",intensidad_horaria_cantidad:0} ); 
       }
 
-     
-
-
-
-
       var guardarAsignatura = function(){
         //$scope.asignatura = {}
 
@@ -98,11 +132,11 @@
         $scope.acuerdo = acuerdo_limpio;
       }//cierra crear acuerdo
 
-       $scope.crearAcuerdo = crearAcuerdo;
-       $scope.limpiarAcuerdo= limpiarAcuerdo;
-       $scope.agregarIntensidadHoraria = agregarIntensidadHoraria;
-       $scope.eliminarIntensidadHoraria =eliminarIntensidadHoraria;
-       $scope.agregarPeriodo= agregarPeriodo;
+      $scope.crearAcuerdo = crearAcuerdo;
+      $scope.limpiarAcuerdo= limpiarAcuerdo;
+      $scope.agregarIntensidadHoraria = agregarIntensidadHoraria;
+      $scope.eliminarIntensidadHoraria =eliminarIntensidadHoraria;
+      $scope.agregarPeriodo= agregarPeriodo;
       $scope.agregarRequisito= agregarRequisito;
       $scope.eliminarRequisito =eliminarRequisito;
    
