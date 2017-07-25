@@ -29,7 +29,12 @@ var create= function(acuerdo){
         acuerdo_vigente:acuerdo.acuerdo_vigente,
         num_acuerdo:acuerdo.num_acuerdo,
         fec_acuerdo:acuerdo.fec_acuerdo
-    });
+    })
+    /*.then(function(x){
+
+            console.log("Id del ultimo registro: ",x.get('id_acuerdo'))
+
+    }) */;
 };
 
 //con callback

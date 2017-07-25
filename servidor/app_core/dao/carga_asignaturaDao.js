@@ -25,8 +25,17 @@ var findById= function(idCargaAsignatura){
 };
 
 
+var create= function(cargaAsignatura){
+    return Models.CargaAsignatura.create({
+        id_acuerdo_periodo:cargaAsignatura.id_acuerdo_periodo,
+        id_asignatura:cargaAsignatura.id_asignatura,
+        credito:cargaAsignatura.credito,
+        carga_asignatura_vigente:cargaAsignatura.carga_asignatura_vigente,
+    });
+};
+
 
 module.exports.findAll=findAll
 module.exports.findById=findById
-
+module.exports.create=create
 

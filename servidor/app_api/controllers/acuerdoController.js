@@ -6,6 +6,8 @@ var Errores= require ("../../app_core/config/errors");
 var AcuerdoDao= require("../../app_core/dao/acuerdoDao");
 var AcuerdoPeriodoDao= require("../../app_core/dao/acuerdo_periodoDao");
 var CargaAsignaturaDao = require("../../app_core/dao/carga_asignaturaDao");
+var IntensidadHorariaDao = require("../../app_core/dao/intensidad_horariaDao");
+
 
 
 
@@ -36,7 +38,8 @@ var createAcuerdo= function(req,res){
 	console.log(acuerdo);
 
 	AcuerdoDao.create(acuerdo).then(function(resultado){
-       Respuesta.sendJsonResponse(res,200,resultado); 
+		Respuesta.sendJsonResponse(res,200,resultado); 
+       console.log(resultado)
     }).catch(function(error){
        Respuesta.sendJsonResponse(res,500,error);
     });
@@ -99,6 +102,7 @@ var createAcuerdoPeriodo= function(req,res){
 
 	AcuerdoPeriodoDao.create(acuerdoPerido).then(function(resultado){
        Respuesta.sendJsonResponse(res,200,resultado); 
+       console.log(resultado);
     }).catch(function(error){
        Respuesta.sendJsonResponse(res,500,error);
     });
@@ -151,7 +155,108 @@ var findByIdCargaAsignatura= function(req,res){
 	});
   
 };
+
+var createCargaAsignatura= function(req,res){ 
+	var cargaAsignatura = req.body;
+	console.log(cargaAsignatura);
+
+
+	/*sequelize.transaction(function (t) {
+			 // chain all your queries here. make sure you return them.
+		  return AcuerdoDao.create(acuerdo, {transaction: t}).then(function (user) {
+		    return AcuerdoDao.create(acuerdo, {transaction: t});
+		  });
+
+		}).then(function (resultado) {
+		  // Transaction has been committed
+		  // result is whatever the result of the promise chain returned to the transaction callback
+		  console.log("Id del ultimo registro: ",resultado.get('id_acuerdo'))
+     	  Respuesta.sendJsonResponse(res,200,resultado); 
+     	  console.log(resultado)
+		}).catch(function (error) {
+		  // Transaction has been rolled back
+		  // err is whatever rejected the promise chain returned to the transaction callback
+		    Respuesta.sendJsonResponse(res,500,error);
+	});*/
+
+	sequelize.transaction(function (t) {
+			 // chain all your queries here. make sure you return them.
+			 return sequelize.transaction({autocommit:false}).then(function(t){
+			 			Models.CargaAsignatura.create(cargaAsignatura, {transaction: t}).then(function (cargaAsignaturaNew) {
+			 		    	Models.IntensidadHoraria.create({
+							    "id_carga_asignatura": "juan",
+							    "id_hora_tipo": 1,
+							    "intensidad_horaria_cantidad": 155
+							}, {transaction: t}).then(function (intensidadHorariaNew) {
+									t.commit();
+									 Respuesta.sendJsonResponse(res,200,intensidadHorariaNew); 
+
+							}).catch(function (err){
+								t.rollback();
+								console.log("Esta bn")
+								Respuesta.sendJsonResponse(res,500,err);
+
+							});
+			 			}).catch(function (err){
+
+							t.rollback();
+							console.log("entro al error")
+							 Respuesta.sendJsonResponse(res,500,err);
+						});
+			 });//transaction fin
+	});
+		/*  return Models.CargaAsignatura.create(cargaAsignatura, {autocommit:false}).then(function (user) {
+		  	console.log("Aqui esta la nea")
+		  	console.log(user.get('id_carga_asignatura'))
+		  //	console.log(user.Instance.dataValues)
+		    return Models.IntensidadHoraria.create({
+					    "id_carga_asignatura": "juan",
+					    "id_hora_tipo": 1,
+					    "intensidad_horaria_cantidad": 155
+					}, {transaction: t});
+		  	});*/
+
+		/*}).then(function (resultado) {
+		  // Transaction has been committed
+		  // result is whatever the result of the promise chain returned to the transaction callback
+		     //return t.commit();
+
+		  Respuesta.sendJsonResponse(res,200,resultado); 
+     	  //console.log(resultado)
+		}).catch(function (error) {
+		  // Transaction has been rolled back
+		  // err is whatever rejected the promise chain returned to the transaction callback
+		  return t.rollback();
+		  console.log("Erroesa")
+		    Respuesta.sendJsonResponse(res,500,error);
+	});*/
+
+
+	/*
+	CargaAsignaturaDao.create(cargaAsignatura).then(function(resultado){
+       Respuesta.sendJsonResponse(res,200,resultado); 
+       console.log(resultado);
+    }).catch(function(error){
+       Respuesta.sendJsonResponse(res,500,error);
+    });
+    */
+
+};
+
 //------------------------------------------------------------------------------------------
+var createIntensidadHoraria= function(req,res){ 
+	var intensidadHoraria = req.body;
+	console.log(intensidadHoraria);
+
+	IntensidadHorariaDao.create(intensidadHoraria).then(function(resultado){
+       Respuesta.sendJsonResponse(res,200,resultado); 
+       console.log(resultado);
+    }).catch(function(error){
+       Respuesta.sendJsonResponse(res,500,error);
+    });
+
+};
+//---------------------------------------------------------------------------------------------
 
 
 module.exports.listarAcuerdos=listarAcuerdos;
@@ -172,4 +277,5 @@ module.exports.deleteAcuerdoPeriodo=deleteAcuerdoPeriodo;
 
 module.exports.listarCargaAsignatura=listarCargaAsignatura;
 module.exports.findByIdCargaAsignatura=findByIdCargaAsignatura;
+module.exports.createCargaAsignatura=createCargaAsignatura;
 

@@ -35,6 +35,8 @@ router.delete('/acuerdoperiodo/:id', AcuerdoController.deleteAcuerdoPeriodo);
 router.get('/cargaasignatura', AcuerdoController.listarCargaAsignatura);
 //findByIdCargaAsignatura
 router.get('/cargaasignatura/:id', AcuerdoController.findByIdCargaAsignatura);
+router.post('/cargaasignatura', AcuerdoController.createCargaAsignatura);
+
 
 module.exports = router;
 
