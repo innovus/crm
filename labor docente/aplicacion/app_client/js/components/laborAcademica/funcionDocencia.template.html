@@ -1,89 +1,51 @@
-<form class="form-horizontal">
-	<div class="box-body">
-		<div class="form-group">
-			<div class="col-md-12" >
-			<label  class="col-sm-2 control-label">  </label>
+<div class="col-md-12">
+	<div class="box">
 
-				<button type="submit" ng-click="agregarIntensidadHoraria(periodoIndex)" class="btn btn-info"><i class="fa fa-plus"></i></button>
-		
-			</div>
+		<div class="box-header with-border">
+			<h3 class="box-title">Asignaturas </h3>
 		</div>
-		<div class="form-group">
-			<label  class="col-sm-2 control-label">Sede</label>
+		<div class="box-body">
+			<table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
 
-				<div class="col-sm-3">
-					<select class="form-control" >
-    					<option value="1">Pasto</option>
-    					<option value="2">Tuquerres</option>
-    					<option value="3">Tumaco</option>
-    					<option value="4">Ipiales</option>
+				<thead>
+					<tr role="row">
 
-                    </select>
-					
-				</div>
+						<th class="col-sm-1">Sede</th>
+						<th class="col-sm-2">Programa</th>
+						<th class="col-sm-1">Semestre</th>
+						<th class="col-sm-1">Cod</th>
+						<th class="col-sm-2">Asignatura</th>
+						<th class="col-sm-1">Grupo</th>
+						<th class="col-sm-1">Tipo</th>
+						<th class="col-sm-1">I.H.S</th>
+						<th class="col-sm-1">I.H.SM</th>
+						
+					</tr>
+				</thead>
+				<tbody>
 
-			<label for="inputEmail" class="col-sm-2 control-label">Programa</label>
-			<div class="col-sm-4" >
-				
-				<input type="text"  class="form-control"  placeholder="Nombre del Programa">
-				
-			</div>
-				
+					<tr role="row" class="odd">
+						<td class="sorting_1">PASTO</td>
+						<td>INGENIERIA DE SISTEMAS</td>
+						<td>1</td>
+						<td>102</td>
+						<td>Calculo 1</td>
+						<td>1</td>
+						<td>T</td>
+						<td>4</td>
+						<td>34</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
-
-		<div class="form-group">
-			<label  class="col-sm-2 control-label">{{periodo_tipo}}</label>
-
-				<div class="col-sm-3">
-					<input type="text"  class="form-control"  placeholder="Nº {{periodo_tipo}}">
-					
-					
-				</div>
-
-			<label for="inputEmail" class="col-sm-2 control-label">Asignatura</label>
-			<div class="col-sm-4" >
-				
-				<input type="text"  class="form-control"  placeholder="Nombre de la asignatura">
-				
-			</div>
-				
+		<div class="box-footer clearfix">
+			<button type="submit" data-toggle="modal" data-target="#addAsignaturaModal" class="btn btn-success pull-right">Agregar</button>
 		</div>
-
-		<div class="form-group">
-			
-			<label for="inputEmail" class="col-sm-2 control-label">Grupo</label>
-			<div class="col-sm-4" >
-				
-				<div class="col-sm-3">
-					<select class="form-control" >
-    					<option value="1">1</option>
-    					<option value="2">2</option>
-    					
-
-                    </select>
-					
-				</div>
-				
-			</div>
-			<!--
-			<label  class="col-sm-2 control-label">{{periodo_tipo}}</label>
-
-				<div class="col-sm-3">
-					<input type="text"  class="form-control"  placeholder="Nº {{periodo_tipo}}">
-					
-					
-				</div>
-				-->
-
-				
-		</div>
-
-
-	</div>
-	<div class="box-footer">
-		<button type="submit" class="btn btn-primary pull-right">Guardar</button>
 		
 	</div>
-
 	
-</form>
+</div>
+
+
+
+
