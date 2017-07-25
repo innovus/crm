@@ -1,6 +1,6 @@
 (function(){
   angular
-    .module('tienda')
+    .module('laborAcademica')
     .controller('homeCtrl', homeCtrl);
 
     homeCtrl.$inject=['$scope','autenticacion','$location'];

@@ -11,7 +11,7 @@
      * 
     */
     angular
-      .module("tienda")
+      .module("laborAcademica")
       .directive("footerGeneric",footerGeneric);
 
       function footerGeneric(){

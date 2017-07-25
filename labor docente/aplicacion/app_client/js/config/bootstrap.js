@@ -2,7 +2,7 @@
 
 (function(){
     angular
-    .module("tienda")
+    .module("laborAcademica")
     .run(run);
 
     function run($rootScope,autenticacion,CONFIG,$window){

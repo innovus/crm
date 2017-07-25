@@ -1,6 +1,6 @@
 (function(){
     angular
-    .module("tienda")
+    .module("laborAcademica")
     .constant("CONFIG",{
         "http_address": "http://190.254.4.19:5001",
         "http_seguridad":"http://190.254.4.19:4000",

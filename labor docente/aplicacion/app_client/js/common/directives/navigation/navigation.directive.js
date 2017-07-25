@@ -1,6 +1,6 @@
 (function () {
   angular
-    .module('tienda')
+    .module('laborAcademica')
     .directive('navigation', navigation);
     function navigation(){
         return {

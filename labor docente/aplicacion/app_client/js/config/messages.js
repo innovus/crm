@@ -1,6 +1,6 @@
 (function(){
     angular
-    .module('tienda')
+    .module('laborAcademica')
     .config(messages);
     messages.$inject= ["$translateProvider"];
     function messages($translateProvider){

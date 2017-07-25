@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app='tienda' style="height:100%">
+<html ng-app='laborAcademica' style="height:100%">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,12 +13,19 @@
     <link rel='stylesheet' href='/css/estilo.css'/>
     <link rel='stylesheet' href='/lib/vendor/sweetalert/dist/sweetalert.css'/>
 
+    <!-- Angular Material CSS using GitCDN to load directly from `bower-material/master` -->
+        <link rel="stylesheet" href="/css/angular-material.css">
+        <link rel="stylesheet" href="/css/page-spinner.css">
+
     <script src='/lib/vendor/jquery-legacy/jquery.min.js'></script> 
     <script src='/lib/vendor/bootstrap/js/bootstrap.min.js'></script>
     <script src='/lib/vendor/adminlte/bootstrap3-wysihtml5.all.min.js'></script>
     <script src='/lib/vendor/adminlte/app.min.js'></script>
     <script src='/lib/vendor/adminlte/demo.js'></script>
     <script src='/lib/vendor/sweetalert/dist/sweetalert.min.js'></script>
+
+
+    
     
     <script src="/lib/angular.min.js"></script>
     <script src="/lib/angular-route.min.js"></script>
@@ -30,26 +37,31 @@
     <script src="/lib/ui-bootstrap-custom-tpls-2.1.3.js"></script>
     <script src="/lib/vendor/angular-sweetalert/SweetAlert.js"></script>
 
+
+    <!-- Angular Material Javascript -->
+    <!-- Angular Material Dependencies -->
+    <script src="/lib/vendor/angular-material/angular-animate.js"></script>
+    <script src="/lib/vendor/angular-material/angular-aria.js"></script>
+
+    <!-- Angular Material Javascript using GitCDN to load directly from `bower-material/master -->
+    
+    <script src="/lib/vendor/angular-material/angular-material.js"></script>
+    <script src="/lib/vendor/angular-material/angular-messages.js"></script>
+
     <script src='/js/app.js'></script>
     <script src='/js/config/configuracion.js'></script>
     <script src="/js/config/routes.js"></script>
     <script src="/js/config/bootstrap.js"></script>
     <script src="/js/config/messages.js"></script>
     <script src='/js/common/services/autenticacion.service.js'></script> 
-    <script src='/js/common/services/producto.service.js'></script>
-    <script src='/js/common/services/marca.service.js'></script>
-    <script src='/js/common/services/helpers.service.js'></script>
-    <script src='/js/common/services/subirArchivo.service.js'></script>
     <script src='/js/common/directives/footerGeneric/footerGeneric.directive.js'></script>
     <script src='/js/common/directives/navigation/navigation.directive.js'></script>
     <script src='/js/common/directives/navigation/navigation.controller.js'></script>
     <script src='/js/common/directives/dirPagination/dirPagination.js'></script>
-    <script src='/js/common/directives/uploadFile/uploadFile.directive.js'></script>
     <script src='/js/components/home/home.controller.js'></script>
-    <script src='/js/components/subirarchivo/subirarchivo.controller.js'></script>
-    <script src='/js/components/productos/modalEditar/modalEditar.controller.js'></script>
-    <script src='/js/components/productos/producto.controller.js'></script>
-    <script src='/js/components/detalleProducto/detalleProducto.controller.js'></script>
+    <script src='/js/components/laborAcademica/laborAcademica.controller.js'></script>
+   
+    
   </head>
   <body class="hold-transition skin-green sidebar-mini">
     <div ng-view class="wrapper"></div>

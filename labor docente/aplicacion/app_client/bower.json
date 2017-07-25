@@ -1,13 +1,14 @@
 {
-  "name": "udenar cartera",
-  "description": "Aplicacion de cartera",
+  "name": "Labor Docente",
+  "description": "Aplicacion de labor docente",
   "main": "app.js",
   "keywords": [
     "udenar",
     "ejemplo"
   ],
   "authors": [
-    "David Villota"
+    "Jorge Luis Viveros",
+    "Juan Carlos Pantoja"
   ],
   "license": "MIT",
   "homepage": "",

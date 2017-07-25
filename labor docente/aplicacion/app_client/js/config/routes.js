@@ -1,6 +1,6 @@
 (function(){
     angular
-    .module('tienda')
+    .module('laborAcademica')
     .config(config);
     
     config.$inject=['$routeProvider','$locationProvider'];
@@ -10,19 +10,11 @@
             templateUrl:'/js/components/home/home.template.html',
             controller:'homeCtrl'
         })
-        .when('/producto',{
-            templateUrl:'/js/components/productos/producto.template.html',
-            controller:'productoController',
-            controllerAs:'hm'
+        .when('/laborAcademica',{
+            templateUrl:'/js/components/laborAcademica/laborAcademica.template.html',
+            controller:'laborAcademicaCtrl'
         })
-        .when('/subir',{
-            templateUrl:'/js/components/subirarchivo/subirarchivo.template.html',
-            controller:'SubirContoller'
-        })
-        .when('/detalle/:productoid',{
-            templateUrl:'/js/components/detalleProducto/detalleProducto.template.html',
-            controller:'detalleProductoController'
-        })
+       
         .otherwise({redirectTo:"/"});
 
         $locationProvider.html5Mode({
