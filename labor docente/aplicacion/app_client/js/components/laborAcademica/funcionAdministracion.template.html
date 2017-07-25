@@ -1,1 +1,25 @@
-<h2> administracion</h2>
+<form class="form-horizontal">
+	<div class="box-body">
+		<div class="form-group">
+		<div class="col-md-12" >
+			<label  class="col-sm-1 col-md-2 control-label">  </label>
+
+				<button type="submit" ng-click="agregarIntensidadHoraria(periodoIndex)" class="btn btn-info"><i class="fa fa-plus"></i></button>
+		
+			</div>
+		</div>
+		<div class="form-group">
+			<label  class="col-sm-2 control-label">Cargo</label>
+				<div class="col-sm-3">
+					<input type="text"  class="form-control"  placeholder="Cargo administrativo">						
+				</div>
+			<label class="col-sm-2 control-label">Intensidad Horaria</label>
+				<div class="col-sm-3" >					
+					<input type="text"  class="form-control"  placeholder="0">					
+				</div>	
+		</div>
+	</div>
+	<div class="box-footer">
+		<button type="submit" class="btn btn-primary pull-right">Guardar</button>		
+	</div>
+</form>
