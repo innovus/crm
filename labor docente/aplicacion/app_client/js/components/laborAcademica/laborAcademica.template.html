@@ -45,8 +45,6 @@
 </div>
 
 <!-- Modals -->
-
-
 <div class="modal fade" id="addAsignaturaModal">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
@@ -64,5 +62,24 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+<div class="modal fade" id="addInvestigacionModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Agregar Asignatura</h4>
+            </div>
+            <div class="modal-body">
+                <ng-include src="'/js/components/laborAcademica/AgregarInvestigacion.template.html'"></ng-include>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" >Guardar</button>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- End Modals -->

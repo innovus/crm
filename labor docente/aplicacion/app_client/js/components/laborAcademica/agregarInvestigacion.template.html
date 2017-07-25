@@ -1,0 +1,122 @@
+<div class="form-horizontal">
+	<div class="box-body">
+
+		<div class="form-group">
+			<label  class="col-sm-2 control-label">Tipo Investigacion</label>
+
+				<div class="col-sm-10">
+					<select class="form-control" ng-model="modalInvestigacion.tipo" >
+    					<option value="1">INVESTIGACIÓN FORMAL</option>
+    					<option value="2">DIRECCIÓN TRABAJOS DE GRADO</option>
+    					<option value="3">JURADO TRABAJO DE GRADO</option>
+    					<option value="4">ASESORIA PROYECTOS INVESTIGACIÓN FORMATICA</option>
+    					<option value="5">PARTICIPACIÓN EN GRUPOS O LINEAS DE INVESTIGACIÓN</option>
+    					<option value="6">PLANEACIÓN Y DISEÑO DE PROYECTOS</option>
+    				
+                    </select>	
+				</div>		
+		</div> 
+
+		<!--  primer tipo div  -->
+		<div ng-show="modalInvestigacion.tipo == 1 || modalInvestigacion.tipo == 2 || modalInvestigacion.tipo == 3 || modalInvestigacion.tipo == 4" >
+
+
+			<div class="form-group">
+				<label  class="col-sm-2 control-label">Nivel Formación</label>
+
+				<div class="col-sm-4">
+					<select class="form-control">
+						<option value="1">Pregrado</option>
+						<option value="2">Postgrado</option>
+						<option value="3">Doctorado</option>
+						<option value="4">Maestria</option>
+					</select>
+					
+				</div>
+
+				<label  class="col-sm-2 control-label">Acuerdo</label>
+				<div class="col-sm-4" >
+					
+					<input type="text" class="form-control" placeholder="Acuerdo de Aprobación">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label  class="col-sm-2 control-label">Proyecto</label>
+
+
+					<div class="col-sm-10">
+						<input type="text"  class="form-control"  placeholder="Titulo del Proyecto">
+						
+						
+					</div>		
+			</div>
+		</div>
+
+		<!--  segundo tipo div  -->
+		<div ng-show="modalInvestigacion.tipo == 5">
+			<div class="form-group">
+				<label  class="col-sm-2 control-label">Nombre Grupo</label>
+
+				<div class="col-sm-4">
+					<input type="text"  class="form-control"  placeholder="Nombre Grupo">	
+				</div>
+
+				<label  class="col-sm-2 control-label">Descripción</label>
+				<div class="col-sm-4" >
+					
+					<input type="text" class="form-control" placeholder="Descripción Actividades">
+				</div>
+			</div>
+		</div>
+
+		<!--  tercer tipo div  -->
+		<div ng-show="modalInvestigacion.tipo == 6">
+			<div class="form-group">
+				<label  class="col-sm-2 control-label">Proyecto</label>
+
+				<div class="col-sm-4">
+					<input type="text"  class="form-control"  placeholder="Proyecto">	
+				</div>
+
+				<label  class="col-sm-2 control-label">Financiador</label>
+				<div class="col-sm-4" >
+					
+					<input type="text" class="form-control" placeholder="Financiador">
+				</div>
+
+
+			</div>
+
+			<div class="form-group">
+				<label  class="col-sm-2 control-label">Descripcion</label>
+
+				<div class="col-sm-10">
+					<input type="text"  class="form-control"  placeholder="Descripción Actividades">	
+				</div>	
+			</div>
+		</div>
+
+
+		<div class="form-group">
+			<label  class="col-sm-2 control-label">Horas Semana</label>
+
+			<div class="col-sm-4">
+				<input type="number" class="form-control" placeholder="Cantidad Horas Semanales">
+
+				
+			</div>
+
+			<label  class="col-sm-2 control-label">Horas Semestre</label>
+			<div class="col-sm-4" >
+				
+				<input type="tect" class="form-control" placeholder="Cantidad Horas Semestrales">
+			</div>
+		</div>
+		
+
+	</div>
+	
+
+	
+</div>

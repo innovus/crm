@@ -35,6 +35,8 @@
 
         $scope.periodo_tipo ="Semestre";
         $scope.laborDocencia ={};
+        $scope.modalInvestigacion = {}
+       // $scope.modalAsignatura ={tipo:1,}
 
         /**
          * contiente las tabs que componen la pagina de hoja de vida
