@@ -22,13 +22,14 @@
 				</thead>
 				<tbody>
 
-					<tr role="row" class="odd">
-						<td >CARGOS ADMINISTRATIVOS</td>
-						<td>ACTO ADMINISTRATIVO</td>
-						<td>4</td>
-						<td>34</td>
+					<tr role="row" class="odd" ng-repeat=" actividadAdministracion in actividadesAdministracion">
+						<td>{{actividadAdministracion.cargo}}</td>
+						<td>{{actividadAdministracion.tipo_cargo}}</td>
+						<td>{{actividadAdministracion.H_S}}</td>
+						<td>{{actividadAdministracion.H_SM}}</td>
 						<td > 
-								<button type="submit" class="btn btn-error"><i class="fa  fa-pencil"></i></button> 								<button type="submit" class="btn btn-danger"><i class="fa  fa-minus"></i></button>
+								<button type="submit" class="btn btn-error"><i class="fa  fa-pencil"></i></button> 	
+								<button type="submit" class="btn btn-danger"><i class="fa  fa-minus"></i></button>
 						</td>
 						
 					</tr>

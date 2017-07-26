@@ -122,6 +122,16 @@
            
         ]
 
+        $scope.actividadesAdministracion = [
+            {
+                cargo:"ACTO ADMINISTRATIVO",
+                tipo_cargo:"CARGOS ADMINISTRATIVOS",
+                H_S:2,
+                H_SM:36,
+            },
+           
+        ]
+
        // $scope.modalAsignatura ={tipo:1,}
 
         /**
