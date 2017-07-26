@@ -37,9 +37,9 @@
         .module('laborAcademica')
         .controller('laborAcademicaCtrl', laborAcademicaCtrl);
 
-    laborAcademicaCtrl.$inject = ['$scope', '$sce', '$compile', '$rootScope', 'autenticacion', '$location', '$timeout', 'SweetAlert', '$q','byCodigo' ];
+    laborAcademicaCtrl.$inject = ['$scope', '$sce', '$compile', '$rootScope', 'autenticacion', '$location', '$timeout', 'SweetAlert', '$q' ];
 
-    function laborAcademicaCtrl($scope, $sce, $compile, $rootScope, autenticacion, $location, $timeout, SweetAlert, $q , byCodigo) {
+    function laborAcademicaCtrl($scope, $sce, $compile, $rootScope, autenticacion, $location, $timeout, SweetAlert, $q ) {
 
         /**
          * esta variable representa el titulo y el subtitulo de la pagina actual
@@ -155,6 +155,18 @@
                 'showTitle' : true
             }
         ];
+/*
+        $scope.filterDetalles = (codigo,vector) => {
+
+            out: []
+            angular.forEach(vector, function (value, key) {
+                if (this.codigos[value.detalle] === true) {
+                    this.out.push(value);
+                }
+        }, items);
+        return items.out;
+    };
+        }*/
 
         /**
          * @ngdoc function
