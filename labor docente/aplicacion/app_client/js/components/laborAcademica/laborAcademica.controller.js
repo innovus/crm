@@ -16,13 +16,30 @@
 
 (function() {
 
+   /* angular.module('laborAcademica', []).
+    filter('byCodigo', function () {
+    return function (tipos, codigos) {
+        var items = {
+            codigos: codigos,
+            out: []
+        };
+        angular.forEach(tipos, function (value, key) {
+            if (this.codigos[value.detalle] === true) {
+                this.out.push(value);
+            }
+        }, items);
+        return items.out;
+    };
+});*/
+
+
     angular
         .module('laborAcademica')
         .controller('laborAcademicaCtrl', laborAcademicaCtrl);
 
-    laborAcademicaCtrl.$inject = ['$scope', '$sce', '$compile', '$rootScope', 'autenticacion', '$location', '$timeout', 'SweetAlert', '$q' ];
+    laborAcademicaCtrl.$inject = ['$scope', '$sce', '$compile', '$rootScope', 'autenticacion', '$location', '$timeout', 'SweetAlert', '$q','byCodigo' ];
 
-    function laborAcademicaCtrl($scope, $sce, $compile, $rootScope, autenticacion, $location, $timeout, SweetAlert, $q) {
+    function laborAcademicaCtrl($scope, $sce, $compile, $rootScope, autenticacion, $location, $timeout, SweetAlert, $q , byCodigo) {
 
         /**
          * esta variable representa el titulo y el subtitulo de la pagina actual
@@ -33,14 +50,82 @@
             "subtitulo": "Juan carlos Pantoja"
         }
 
+
         $scope.periodo_tipo ="Semestre";
         $scope.laborDocencia ={};
-        $scope.modalInvestigacion = {}
+        $scope.modalInvestigacion = {};
+        /**
+         * contiente los tipos de investigacion que tiene una actividad de ivestigacion
+         * codigo y el detalle
+         * @var {Object} tabs
+         */
+        $scope.tipoActividadesInvestigacion = [
+            {cod:1,detalle:"INVESTIGACIÓN FORMAL"},
+            {cod:2,detalle:"DIRECCIÓN TRABAJOS DE GRADO"},
+            {cod:3,detalle:"JURADO TRABAJO DE GRADO"},
+            {cod:4,detalle:"ASESORIA PROYECTOS INVESTIGACIÓN FORMATICA"},
+            {cod:5,detalle:"PARTICIPACIÓN EN GRUPOS O LINEAS DE INVESTIGACIÓN"},
+            {cod:6,detalle:"PLANEACIÓN Y DISEÑO DE PROYECTOS"},
+        ]
+
+         var nueva = $scope.tipoActividadesInvestigacion.filter(x => x.cod === 1 );
+
+
+        /**
+         * contiente los tipos de investigacion que tiene una actividad de ivestigacion
+         * codigo y el detalle
+         * @var {Object} tabs
+         */
+        $scope.tipoNivelFormacion = [
+            {cod:1,detalle:"Pregrado"},
+            {cod:2,detalle:"Postgrado"},
+            {cod:3,detalle:"Doctorado"},
+            {cod:4,detalle:"Maestria"},
+        ]
+
+        /**
+         * contiente las investigaciones de prueba que cargaran al principio cuando inicie la pagina
+         * codigo y el detalle
+         * @var {Object} tabs
+         */
+        $scope.actividadesInvestigacion = [
+            {
+                tipo:1,
+                nivel_formacion:1,
+                titulo_proyecto:"Desarrolo e Implementacion de Herramienta para el seguimiento continuo de el Colegio LICEO DE LA UNIVERSIDAD DE NARIÑO",
+                acuerdo:"2334-4",
+                H_S:2,
+                H_SM:36,
+            },
+            {
+                tipo:4,
+                nivel_formacion:1,
+                titulo_proyecto:"Desarrolo e Implementacion de Herramienta para el seguimiento continuo de el Colegio LICEO DE LA UNIVERSIDAD DE NARIÑO",
+                acuerdo:"2334-4",
+                H_S:2,
+                H_SM:36,
+            },
+            {
+                tipo:5,
+                nombre_grupo:"Grupo 14",
+                descripcion:"Desarrolo e Implementacion de Herramienta para el seguimiento continuo de el Colegio LICEO DE LA UNIVERSIDAD DE NARIÑO",
+                H_S:2,
+                H_SM:36,
+            },
+            {
+                tipo:6,
+                nombre_grupo:"Grupo 1",
+                financiador:"Ministerio",
+                descripcion:"Desarrolo e Implementacion de Herramienta para el seguimiento continuo de el Colegio LICEO DE LA UNIVERSIDAD DE NARIÑO",
+                H_S:2,
+                H_SM:36,
+            },
+            ]
        // $scope.modalAsignatura ={tipo:1,}
 
         /**
-         * contiente las tabs que componen la pagina de hoja de vida
-         * Datos personales, Nucleo Familiar, Formacion, Experiencia laboral
+         * contiente las tabs que componen la pagina de labor academica
+         * 
          * @var {Object} tabs
          */
         $scope.tabs = [
