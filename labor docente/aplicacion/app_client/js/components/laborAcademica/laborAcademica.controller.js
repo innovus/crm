@@ -1,17 +1,17 @@
 /**
  * @file controlador para la hoja de vida del empleado
- * @name hojadevida.controller.js
- * @author Felipe Roa - Hamilton Arce
+ * @name laborAcademica.controller.js
+ * @author Jorge Luis Viveros - Juan Carlos Pantoja
  * @license Udenar
  * @copyright 21/07/2017 Udenar
  **/
 
 /**
- * controlador para la hoja de vida del empleado
+ * controlador para manejar la labor academica
  * como su informacion personal, formacion academica,
  * nucleo familiar, idioma extrajero, experiencia laboral
  *
- * @module hojaDeVidaCtrl
+ * @module laborAcademica
  */
 
 (function() {
@@ -35,11 +35,12 @@
             "titulo": "Labor Academica",
             "subtitulo": "Juan carlos Pantoja"
         }
+        modalLimpio = {tipo:"1",nivel_formacion:"1"}
 
 
         $scope.periodo_tipo ="Semestre";
         $scope.laborDocencia ={};
-        $scope.modalInvestigacion = {};
+        $scope.modalInvestigacion = modalLimpio;
         /**
          * contiente los tipos de investigacion que tiene una actividad de ivestigacion
          * codigo y el detalle
@@ -165,7 +166,7 @@
          * @description abre el modal y prepara para agregar una nueva investigacion al vector
          */
         $scope.agregarInvestigacion = () => {
-            $scope.modalInvestigacion ={};
+            $scope.modalInvestigacion =modalLimpio;
             $scope.modalInvestigacion.agregar = true;
 
             console.log("prueba")
@@ -185,6 +186,23 @@
             
         };
 
+         /**
+         * @ngdoc function
+         * @name guardarInvestigacion
+         * @methodOf module.laborAcademica
+         * @description agrega una nueva experiencia laboral
+         */
+        $scope.guardarInvestigacion = () => {
+            if($scope.modalInvestigacion.agregar == true){
+                $scope.actividadesInvestigacion.push($scope.modalInvestigacion);
+
+            }else{
+                console.log("editar");
+
+            }
+
+        };
+
         /**
          * @ngdoc function
          * @name addFamilyNucleus
@@ -195,15 +213,7 @@
 
         };
 
-        /**
-         * @ngdoc function
-         * @name addWorkExperience
-         * @methodOf module.nomina
-         * @description agrega una nueva experiencia laboral
-         */
-        $scope.addWorkExperience = () => {
-
-        };
+       
 
         /**
          * @ngdoc function
