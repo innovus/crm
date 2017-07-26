@@ -28,8 +28,8 @@
 						<td>{{actividadAdministracion.H_S}}</td>
 						<td>{{actividadAdministracion.H_SM}}</td>
 						<td > 
-								<button type="submit" class="btn btn-error"><i class="fa  fa-pencil"></i></button> 	
-								<button type="submit" class="btn btn-danger"><i class="fa  fa-minus"></i></button>
+								<button type="submit" class="btn btn-error"  data-toggle="modal" data-target="#addActividadesAdministracionModal" ng-click="editarAdministracion(actividadAdministracion)" ><i class="fa  fa-pencil"></i></button> 	
+								<button type="submit" class="btn btn-danger" ng-click="eliminarInvestigacion(actividadesAdministracion,actividadAdministracion)"><i class="fa  fa-minus"  ></i></button>
 						</td>
 						
 					</tr>
@@ -37,7 +37,7 @@
 			</table>
 		</div>
 		<div class="box-footer clearfix">
-			<button type="submit" data-toggle="modal" data-target="#addActividadesAdministracionModal" class="btn btn-success pull-right">Agregar</button>
+			<button type="submit" data-toggle="modal" data-target="#addActividadesAdministracionModal" class="btn btn-success pull-right"  ng-click="agregarAdministracion()">Agregar</button>
 		</div>
 		
 	</div>

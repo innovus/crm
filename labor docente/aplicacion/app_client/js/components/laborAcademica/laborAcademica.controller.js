@@ -43,6 +43,8 @@
         $scope.modalInvestigacion = modalLimpio;
         investigacionEditar = {};
         interaccionSocialEditar = {};
+        administracionEditar = {};
+        mejoramientoAcademicoEditar = {};
         /**
          * contiente los tipos de investigacion que tiene una actividad de ivestigacion
          * codigo y el detalle
@@ -132,6 +134,15 @@
            
         ]
 
+        $scope.actividadesMejoramientoAcademico = [
+            {
+                mejoramiento:"COMISION DE ESTUDIOS",
+                tipo_mejoramiento:"ACTO ADMINISTRATIVO",
+                H_S:2,
+                H_SM:36,
+            },
+           
+        ]
        // $scope.modalAsignatura ={tipo:1,}
 
         /**
@@ -284,6 +295,87 @@
             }
 
         };
+
+
+        /**
+         * @ngdoc function
+         * @name editarProyeccionSocial
+         * @methodOf module.proyeccionSocial
+         * @description abre el modal y edita los campos para proyeccion social
+         */
+        $scope.editarAdministracion = (funcionAdministracion) => {
+            administracionEditar = funcionAdministracion ;
+            index =  $scope.actividadesAdministracion.indexOf(funcionAdministracion);
+            $scope.modalAdministracion  = $scope.actividadesAdministracion[index];
+            $scope.modalAdministracion.agregar = false;
+            console.log(index)
+            
+        };
+
+
+        $scope.agregarAdministracion = () => {
+            $scope.modalAdministracion ={};
+            $scope.modalAdministracion.agregar = true;
+            console.log("prueba")
+            
+        };
+
+
+        /**
+         * @ngdoc function
+         * @name guardarInteraccionSocial
+         * @methodOf module.InteraccionSocial
+         * @description agrega una nueva Interaccion Social 
+         */
+        $scope.guardarAdministracion = () => {
+            if($scope.modalAdministracion.agregar == true || $scope.modalAdministracion.agregar == undefined ){
+                $scope.actividadesAdministracion.push($scope.modalAdministracion);
+
+            }else{
+                index =  $scope.actividadesAdministracion.indexOf(administracionEditar);
+                $scope.actividadesAdministracion[index] = $scope.modalAdministracion;
+
+
+                console.log("editar");
+
+            }
+
+        };
+
+
+        //modalMejoramientoAcademico
+
+         $scope.editarMejoramientoAcademico = (mejoramientoAcademico) => {
+            mejoramientoAcademicoEditar = mejoramientoAcademico ;
+            index =  $scope.actividadesMejoramientoAcademico.indexOf(mejoramientoAcademico);
+            $scope.modalMejoramientoAcademico  = $scope.actividadesMejoramientoAcademico[index];
+            $scope.modalMejoramientoAcademico.agregar = false;
+            console.log(index)
+            
+        };
+
+         $scope.agregarMejoramientoAcademico = () => {
+            $scope.modalMejoramientoAcademico ={};
+            $scope.modalMejoramientoAcademico.agregar = true;
+            console.log("prueba")
+            
+        };
+
+        $scope.guardarMejoramientoAcademico = () => {
+            if($scope.modalMejoramientoAcademico.agregar == true || $scope.modalMejoramientoAcademico.agregar == undefined ){
+                $scope.actividadesMejoramientoAcademico.push($scope.modalMejoramientoAcademico);
+
+            }else{
+                index =  $scope.actividadesMejoramientoAcademico.indexOf(mejoramientoAcademicoEditar);
+                $scope.actividadesMejoramientoAcademico[index] = $scope.modalMejoramientoAcademico;
+
+
+                console.log("editar");
+
+            }
+
+        };
+
 
         $scope.eliminarInvestigacion = (vector,eliminar) => {
             console.log(vector)

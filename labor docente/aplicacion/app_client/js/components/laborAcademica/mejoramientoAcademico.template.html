@@ -22,13 +22,14 @@
 				</thead>
 				<tbody>
 
-					<tr role="row" class="odd">
-						<td >COMISION DE ESTUDIOS</td>
-						<td>ACTO ADMINISTRATIVO</td>
-						<td>4</td>
-						<td>34</td>
+					<tr role="row" class="odd" ng-repeat=" actividadeMejoramientoAcademico in actividadesMejoramientoAcademico">
+						<td>{{actividadeMejoramientoAcademico.mejoramiento}}</td>
+						<td>{{actividadeMejoramientoAcademico.tipo_mejoramiento}}</td>
+						<td>{{actividadeMejoramientoAcademico.H_S}}</td>
+						<td>{{actividadeMejoramientoAcademico.H_SM}}</td>
 						<td > 
-								<button type="submit" class="btn btn-error"><i class="fa  fa-pencil"></i></button> 								<button type="submit" class="btn btn-danger"><i class="fa  fa-minus"></i></button>
+								<button type="submit" class="btn btn-error" data-toggle="modal" data-target="#addMejoramientoAcademicoModal"  ng-click="editarMejoramientoAcademico(actividadeMejoramientoAcademico)"><i class="fa  fa-pencil"></i></button> 		
+								<button type="submit" class="btn btn-danger" ng-click="eliminarInvestigacion(actividadesMejoramientoAcademico,actividadeMejoramientoAcademico)"><i class="fa  fa-minus"></i></button>
 						</td>
 						
 					</tr>
@@ -36,7 +37,7 @@
 			</table>
 		</div>
 		<div class="box-footer clearfix">
-			<button type="submit" data-toggle="modal" data-target="#addMejoramientoAcademicoModal" class="btn btn-success pull-right">Agregar</button>
+			<button type="submit" data-toggle="modal" data-target="#addMejoramientoAcademicoModal" class="btn btn-success pull-right" ng-click="agregarMejoramientoAcademico()">Agregar</button>
 		</div>
 		
 	</div>
