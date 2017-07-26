@@ -9,26 +9,33 @@
 				<table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
 
 					<thead>
-						<tr role="row">
-
+						<tr role="row" ">
+							
 							<th class="col-sm-3">Tipo</th>
 							<th class="col-sm-1">Nivel Formación</th>
 							<th class="col-sm-5">Titulo de Proyecto</th>
 							<th class="col-sm-1">Acuerdo de Aprobación</th>
 							<th class="col-sm-1">H.S</th>
 							<th class="col-sm-1">H.SM</th>
+							<th class="col-sm-2"></th>
 						</tr>
 					</thead>
 					<tbody>
 
-						<tr role="row" class="odd">
-							<td>Asesoria Proyectos Investigación Formativa</td>
-							<td class="sorting_1">Pregrado</td>
-							<td>Desarrolo e Implementacion de Herramienta para el seguimiento continuo de el Colegio LICEO DE LA UNIVERSIDAD DE NARIÑO</td>
-							<td>2334-4</td>
+						<tr role="row" class="odd" ng-repeat=" actividadInvestigacion in actividadesInvestigacion"  ng-if="actividadInvestigacion.tipo == 1 || actividadInvestigacion.tipo == 2 || actividadInvestigacion.tipo == 3  || actividadInvestigacion.tipo == 4">
 							
-							<td>2</td>
-							<td>36</td>
+							<td>{{tipoActividadesInvestigacion.filter(x => x.cod == 1)}}
+ </td>
+							<td>Pregrado</td>
+							<td>{{actividadInvestigacion.titulo_proyecto}}</td>
+							<td>{{actividadInvestigacion.acuerdo}}</td>
+							<td>{{actividadInvestigacion.H_S}}</td>
+							<td>{{actividadInvestigacion.H_SM}}</td>
+							<td > 
+								<button type="submit" class="btn btn-error"><i class="fa  fa-pencil"></i></button>
+								<button type="submit" class="btn btn-danger"><i class="fa  fa-minus"></i></button>
+							  
+							  </td>
 							
 						</tr>
 					</tbody>
@@ -43,21 +50,26 @@
 
 					<thead>
 						<tr role="row">
-
+							
 							<th class="col-sm-4">Nombre Grupo</th>
 							<th class="col-sm-6">Descripcion Actividades</th>
 							<th class="col-sm-1">H.S</th>
 							<th class="col-sm-1">H.SM</th>
+							<th class="col-sm-2"></th>
 						</tr>
 					</thead>
 					<tbody>
 
-						<tr role="row" class="odd">
-							<td class="sorting_1">Grupo 1</td>
-							<td>Desarrolo e Implementacion de Herramienta para el seguimiento continuo de el Colegio LICEO DE LA UNIVERSIDAD DE NARIÑO</td>
+						<tr role="row" class="odd" ng-repeat=" actividadInvestigacion in actividadesInvestigacion | filter:{tipo:5}">
 							
-							<td>2</td>
-							<td>36</td>
+							<td >{{actividadInvestigacion.nombre_grupo}}</td>
+							<td>{{actividadInvestigacion.descripcion}}</td>
+							<td>{{actividadInvestigacion.H_S}}</td>
+							<td>{{actividadInvestigacion.H_SM}}</td>
+							<td>
+								<button type="submit" class="btn btn-error"><i class="fa  fa-pencil"></i></button>
+								<button type="submit" class="btn btn-danger"><i class="fa  fa-minus"></i></button>
+							</td>
 							
 						</tr>
 					</tbody>
@@ -72,22 +84,28 @@
 
 					<thead>
 						<tr role="row">
-
+							
 							<th class="col-sm-2">Nombre Grupo</th>
 							<th class="col-sm-5">Descripcion Actividades</th>
 							<th class="col-sm-3">Financiador</th>
 							<th class="col-sm-1">H.S</th>
 							<th class="col-sm-1">H.SM</th>
+							<th class="col-sm-2"> </th>
 						</tr>
 					</thead>
 					<tbody>
 
-						<tr role="row" class="odd">
-							<td class="sorting_1">Grupo 1</td>
-							<td>Desarrolo e Implementacion de Herramienta para el seguimiento continuo de el Colegio LICEO DE LA UNIVERSIDAD DE NARIÑO</td>
-							<td>Ministerio</td>
-							<td>2</td>
-							<td>36</td>
+						<tr role="row" class="odd" ng-repeat=" actividadInvestigacion in actividadesInvestigacion | filter:{tipo:6}">
+							
+							<td >{{actividadInvestigacion.nombre_grupo}}</td>
+							<td>{{actividadInvestigacion.descripcion}}</td>
+							<td>{{actividadInvestigacion.financiador}}</td>
+							<td>{{actividadInvestigacion.H_S}}</td>
+							<td>{{actividadInvestigacion.H_SM}}</td>
+							<td>
+								<button type="submit" class="btn btn-error"><i class="fa  fa-pencil"></i></button>
+								<button type="submit" class="btn btn-danger"><i class="fa  fa-minus"></i></button>
+							</td>
 							
 						</tr>
 					</tbody>
