@@ -23,9 +23,9 @@
         .module('laborAcademica')
         .controller('laborAcademicaCtrl', laborAcademicaCtrl);
 
-    laborAcademicaCtrl.$inject = ['$scope', '$sce', '$compile', '$rootScope', 'autenticacion', '$location', '$timeout', 'SweetAlert', '$q' ];
+    laborAcademicaCtrl.$inject = ['$scope', '$sce', '$compile', '$rootScope', 'autenticacion', '$location', '$timeout', 'SweetAlert', '$q','MensajesService' ];
 
-    function laborAcademicaCtrl($scope, $sce, $compile, $rootScope, autenticacion, $location, $timeout, SweetAlert, $q ) {
+    function laborAcademicaCtrl($scope, $sce, $compile, $rootScope, autenticacion, $location, $timeout, SweetAlert, $q , MensajesService) {
 
         /**
          * esta variable representa el titulo y el subtitulo de la pagina actual
@@ -284,6 +284,24 @@
             }
 
         };
+
+        $scope.eliminarInvestigacion = (vector,eliminar) => {
+            console.log(vector)
+
+            var funcionEliminar= function() {
+                console.log(vector);
+                index =  vector.indexOf(eliminar);
+                vector.splice(index,1);
+                MensajesService.mensajeAlerta("Se ha eliminado el registro de manera exitosa", "exito");
+            }
+
+
+             MensajesService.mensajeConfirmacion(
+                "Eliminar Registro",
+                "Esta seguro de eliminar este registro ",
+                funcionEliminar
+            );
+        }
 
         /**
          * @ngdoc function
