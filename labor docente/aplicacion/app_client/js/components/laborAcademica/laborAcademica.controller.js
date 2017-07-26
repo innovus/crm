@@ -83,18 +83,19 @@
                 H_S:2,
                 H_SM:36,
             },
+            
+            {
+                tipo:"5",
+                nombre_grupo:"Grupo 14",
+                descripcion:"Desarrolo e Implementacion de Herramienta para el seguimiento continuo de el Colegio LICEO DE LA UNIVERSIDAD DE NARIÑO",
+                H_S:2,
+                H_SM:36,
+            },
             {
                 tipo:"4",
                 nivel_formacion:"1",
                 titulo_proyecto:"Desarrolo e Implementacion de Herramienta para el seguimiento continuo de el Colegio LICEO DE LA UNIVERSIDAD DE NARIÑO",
                 acuerdo:"2334-4",
-                H_S:2,
-                H_SM:36,
-            },
-            {
-                tipo:"5",
-                nombre_grupo:"Grupo 14",
-                descripcion:"Desarrolo e Implementacion de Herramienta para el seguimiento continuo de el Colegio LICEO DE LA UNIVERSIDAD DE NARIÑO",
                 H_S:2,
                 H_SM:36,
             },
@@ -190,10 +191,11 @@
          * @methodOf module.laborAcademica
          * @description abre el modal y prepara para agregar una nueva investigacion al vector
          */
-        $scope.editarInvestigacion = (investigacion) => {
-            $scope.modalInvestigacion  =investigacion;
+        $scope.editarInvestigacion = (index) => {
+            $scope.modalInvestigacion  = $scope.actividadesInvestigacion[index];
+
             $scope.modalInvestigacion.agregar = false;
-            console.log($scope.modalInvestigacion)
+            console.log(index)
             
         };
 
@@ -204,7 +206,7 @@
          * @description agrega una nueva experiencia laboral
          */
         $scope.guardarInvestigacion = () => {
-            if($scope.modalInvestigacion.agregar == true){
+            if($scope.modalInvestigacion.agregar == true || $scope.modalInvestigacion.agregar == undefined ){
                 $scope.actividadesInvestigacion.push($scope.modalInvestigacion);
 
             }else{
