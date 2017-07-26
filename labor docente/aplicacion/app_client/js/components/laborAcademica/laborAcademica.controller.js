@@ -42,6 +42,7 @@
         $scope.laborDocencia ={};
         $scope.modalInvestigacion = modalLimpio;
         investigacionEditar = {};
+        interaccionSocialEditar = {};
         /**
          * contiente los tipos de investigacion que tiene una actividad de ivestigacion
          * codigo y el detalle
@@ -117,7 +118,8 @@
                 acuerdo_aprobacion:"acuerdo No 3256",
                 H_S:2,
                 H_SM:36,
-            }
+            },
+           
         ]
 
        // $scope.modalAsignatura ={tipo:1,}
@@ -223,7 +225,7 @@
         };
 
 
-        //editarProyeccionSocial
+    
          /**
          * @ngdoc function
          * @name editarProyeccionSocial
@@ -231,10 +233,46 @@
          * @description abre el modal y edita los campos para proyeccion social
          */
         $scope.editarProyeccionSocial = (proyeccionSocial) => {
-            $scope.modalInvestigacion  =proyeccionSocial;
-            $scope.modalInvestigacion.agregar = false;
-            console.log($scope.modalInvestigacion)
+            interaccionSocialEditar = proyeccionSocial ;
+            index =  $scope.actividadesProyeccionSocial.indexOf(proyeccionSocial);
+            $scope.modalInteraccionSocial  = $scope.actividadesProyeccionSocial[index];
+            $scope.modalInteraccionSocial.agregar = false;
+            console.log(index)
             
+        };
+
+        /**
+         * @ngdoc function
+         * @name agregarInteraccionSocial
+         * @methodOf module.InteraccionSocial
+         * @description abre el modal y prepara para agregar una nueva interaccion social al vector
+         */
+        $scope.agregarInteraccionSocial = () => {
+            $scope.modalInteraccionSocial ={};
+            $scope.modalInteraccionSocial.agregar = true;
+            console.log("prueba")
+            
+        };
+
+        /**
+         * @ngdoc function
+         * @name guardarInteraccionSocial
+         * @methodOf module.InteraccionSocial
+         * @description agrega una nueva Interaccion Social 
+         */
+        $scope.guardarInteraccionSocial = () => {
+            if($scope.modalInteraccionSocial.agregar == true || $scope.modalInteraccionSocial.agregar == undefined ){
+                $scope.actividadesProyeccionSocial.push($scope.modalInteraccionSocial);
+
+            }else{
+                index =  $scope.actividadesProyeccionSocial.indexOf(interaccionSocialEditar);
+                $scope.actividadesProyeccionSocial[index] = $scope.modalInteraccionSocial;
+
+
+                console.log("editar");
+
+            }
+
         };
 
         /**
