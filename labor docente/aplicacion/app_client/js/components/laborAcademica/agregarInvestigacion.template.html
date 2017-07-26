@@ -25,19 +25,19 @@
 				<label  class="col-sm-2 control-label">Nivel Formación</label>
 
 				<div class="col-sm-4">
-					<select class="form-control">
-						<option value="1">Pregrado</option>
-						<option value="2">Postgrado</option>
-						<option value="3">Doctorado</option>
-						<option value="4">Maestria</option>
+					<select class="form-control" ng-model="modalInvestigacion.nivel_formacion">
+						<option value=1>Pregrado</option>
+						<option value=2>Postgrado</option>
+						<option value=3>Doctorado</option>
+						<option value=4>Maestria</option>
 					</select>
 					
 				</div>
 
-				<label  class="col-sm-2 control-label">Acuerdo</label>
+				<label  class="col-sm-2 control-label" >Acuerdo</label>
 				<div class="col-sm-4" >
 					
-					<input type="text" class="form-control" placeholder="Acuerdo de Aprobación">
+					<input type="text" class="form-control"  ng-model="modalInvestigacion.acuerdo" placeholder="Acuerdo de Aprobación">
 				</div>
 			</div>
 
@@ -46,7 +46,7 @@
 
 
 					<div class="col-sm-10">
-						<input type="text"  class="form-control"  placeholder="Titulo del Proyecto">
+						<input type="text"  class="form-control" ng-model="modalInvestigacion.titulo_proyecto" placeholder="Titulo del Proyecto">
 						
 						
 					</div>		
@@ -59,13 +59,13 @@
 				<label  class="col-sm-2 control-label">Nombre Grupo</label>
 
 				<div class="col-sm-4">
-					<input type="text"  class="form-control"  placeholder="Nombre Grupo">	
+					<input type="text"  class="form-control" ng-model="modalInvestigacion.nombre_grupo"  placeholder="Nombre Grupo">	
 				</div>
 
 				<label  class="col-sm-2 control-label">Descripción</label>
 				<div class="col-sm-4" >
 					
-					<input type="text" class="form-control" placeholder="Descripción Actividades">
+					<input type="text" class="form-control" ng-model="modalInvestigacion.descripcion" placeholder="Descripción Actividades">
 				</div>
 			</div>
 		</div>
@@ -73,16 +73,16 @@
 		<!--  tercer tipo div  -->
 		<div ng-show="modalInvestigacion.tipo == 6">
 			<div class="form-group">
-				<label  class="col-sm-2 control-label">Proyecto</label>
+				<label  class="col-sm-2 control-label">Nombre Grupo</label>
 
 				<div class="col-sm-4">
-					<input type="text"  class="form-control"  placeholder="Proyecto">	
+					<input type="text"  class="form-control" ng-model="modalInvestigacion.nombre_grupo" placeholder="Proyecto">	
 				</div>
 
 				<label  class="col-sm-2 control-label">Financiador</label>
 				<div class="col-sm-4" >
 					
-					<input type="text" class="form-control" placeholder="Financiador">
+					<input type="text" class="form-control" ng-model="modalInvestigacion.financiador" placeholder="Financiador">
 				</div>
 
 
@@ -92,7 +92,7 @@
 				<label  class="col-sm-2 control-label">Descripcion</label>
 
 				<div class="col-sm-10">
-					<input type="text"  class="form-control"  placeholder="Descripción Actividades">	
+					<input type="text"  class="form-control"  ng-model="modalInvestigacion.descripcion" placeholder="Descripción Actividades">	
 				</div>	
 			</div>
 		</div>
@@ -102,7 +102,7 @@
 			<label  class="col-sm-2 control-label">Horas Semana</label>
 
 			<div class="col-sm-4">
-				<input type="number" class="form-control" placeholder="Cantidad Horas Semanales">
+				<input type="number" class="form-control" ng-model="modalInvestigacion.H_S" placeholder="Cantidad Horas Semanales">
 
 				
 			</div>
@@ -110,7 +110,7 @@
 			<label  class="col-sm-2 control-label">Horas Semestre</label>
 			<div class="col-sm-4" >
 				
-				<input type="tect" class="form-control" placeholder="Cantidad Horas Semestrales">
+				<input type="text" class="form-control" ng-model="modalInvestigacion.H_SM" placeholder="Cantidad Horas Semestrales">
 			</div>
 		</div>
 		

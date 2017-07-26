@@ -16,21 +16,7 @@
 
 (function() {
 
-   /* angular.module('laborAcademica', []).
-    filter('byCodigo', function () {
-    return function (tipos, codigos) {
-        var items = {
-            codigos: codigos,
-            out: []
-        };
-        angular.forEach(tipos, function (value, key) {
-            if (this.codigos[value.detalle] === true) {
-                this.out.push(value);
-            }
-        }, items);
-        return items.out;
-    };
-});*/
+
 
 
     angular
@@ -60,16 +46,15 @@
          * @var {Object} tabs
          */
         $scope.tipoActividadesInvestigacion = [
-            {cod:1,detalle:"INVESTIGACIÓN FORMAL"},
-            {cod:2,detalle:"DIRECCIÓN TRABAJOS DE GRADO"},
-            {cod:3,detalle:"JURADO TRABAJO DE GRADO"},
-            {cod:4,detalle:"ASESORIA PROYECTOS INVESTIGACIÓN FORMATICA"},
-            {cod:5,detalle:"PARTICIPACIÓN EN GRUPOS O LINEAS DE INVESTIGACIÓN"},
-            {cod:6,detalle:"PLANEACIÓN Y DISEÑO DE PROYECTOS"},
+            {cod:"1",detalle:"INVESTIGACIÓN FORMAL"},
+            {cod:"2",detalle:"DIRECCIÓN TRABAJOS DE GRADO"},
+            {cod:"3",detalle:"JURADO TRABAJO DE GRADO"},
+            {cod:"4",detalle:"ASESORIA PROYECTOS INVESTIGACIÓN FORMATICA"},
+            {cod:"5",detalle:"PARTICIPACIÓN EN GRUPOS O LINEAS DE INVESTIGACIÓN"},
+            {cod:"6",detalle:"PLANEACIÓN Y DISEÑO DE PROYECTOS"},
         ]
 
-         var nueva = $scope.tipoActividadesInvestigacion.filter(x => x.cod === 1 );
-
+         
 
         /**
          * contiente los tipos de investigacion que tiene una actividad de ivestigacion
@@ -90,37 +75,37 @@
          */
         $scope.actividadesInvestigacion = [
             {
-                tipo:1,
-                nivel_formacion:1,
+                tipo:"1",
+                nivel_formacion:"1",
                 titulo_proyecto:"Desarrolo e Implementacion de Herramienta para el seguimiento continuo de el Colegio LICEO DE LA UNIVERSIDAD DE NARIÑO",
                 acuerdo:"2334-4",
                 H_S:2,
                 H_SM:36,
             },
             {
-                tipo:4,
-                nivel_formacion:1,
+                tipo:"4",
+                nivel_formacion:"1",
                 titulo_proyecto:"Desarrolo e Implementacion de Herramienta para el seguimiento continuo de el Colegio LICEO DE LA UNIVERSIDAD DE NARIÑO",
                 acuerdo:"2334-4",
                 H_S:2,
                 H_SM:36,
             },
             {
-                tipo:5,
+                tipo:"5",
                 nombre_grupo:"Grupo 14",
                 descripcion:"Desarrolo e Implementacion de Herramienta para el seguimiento continuo de el Colegio LICEO DE LA UNIVERSIDAD DE NARIÑO",
                 H_S:2,
                 H_SM:36,
             },
             {
-                tipo:6,
+                tipo:"6",
                 nombre_grupo:"Grupo 1",
                 financiador:"Ministerio",
                 descripcion:"Desarrolo e Implementacion de Herramienta para el seguimiento continuo de el Colegio LICEO DE LA UNIVERSIDAD DE NARIÑO",
                 H_S:2,
                 H_SM:36,
             },
-            ]
+        ]
        // $scope.modalAsignatura ={tipo:1,}
 
         /**
@@ -155,18 +140,50 @@
                 'showTitle' : true
             }
         ];
-/*
-        $scope.filterDetalles = (codigo,vector) => {
 
-            out: []
+        /**
+         * @ngdoc function
+         * @name filterDetalles
+         * @methodOf module.laborAcademica
+         * @description Recibe un vector y un codigo para q consulte por codigo el detalle de un tipo
+         */
+        $scope.filterDetalles = (codigo,vector) => {
+            out = "";
             angular.forEach(vector, function (value, key) {
-                if (this.codigos[value.detalle] === true) {
-                    this.out.push(value);
+                
+                if(value.cod == codigo){
+                    out = value.detalle
                 }
-        }, items);
-        return items.out;
-    };
-        }*/
+            });
+            return out;
+        };
+
+         /**
+         * @ngdoc function
+         * @name agregarInvestigacion
+         * @methodOf module.laborAcademica
+         * @description abre el modal y prepara para agregar una nueva investigacion al vector
+         */
+        $scope.agregarInvestigacion = () => {
+            $scope.modalInvestigacion ={};
+            $scope.modalInvestigacion.agregar = true;
+
+            console.log("prueba")
+            
+        };
+
+         /**
+         * @ngdoc function
+         * @name agregarInvestigacion
+         * @methodOf module.laborAcademica
+         * @description abre el modal y prepara para agregar una nueva investigacion al vector
+         */
+        $scope.editarInvestigacion = (investigacion) => {
+            $scope.modalInvestigacion  =investigacion;
+            $scope.modalInvestigacion.agregar = false;
+            console.log($scope.modalInvestigacion)
+            
+        };
 
         /**
          * @ngdoc function

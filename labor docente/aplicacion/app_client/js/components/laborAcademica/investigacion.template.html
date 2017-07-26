@@ -24,7 +24,7 @@
 
 						<tr role="row" class="odd" ng-repeat=" actividadInvestigacion in actividadesInvestigacion"  ng-if="actividadInvestigacion.tipo == 1 || actividadInvestigacion.tipo == 2 || actividadInvestigacion.tipo == 3  || actividadInvestigacion.tipo == 4">
 							
-							<td>{{}}
+							<td>{{filterDetalles(actividadInvestigacion.tipo,tipoActividadesInvestigacion)}}
  </td>
 							<td>Pregrado</td>
 							<td>{{actividadInvestigacion.titulo_proyecto}}</td>
@@ -32,7 +32,7 @@
 							<td>{{actividadInvestigacion.H_S}}</td>
 							<td>{{actividadInvestigacion.H_SM}}</td>
 							<td > 
-								<button type="submit" class="btn btn-error"><i class="fa  fa-pencil"></i></button>
+								<button type="submit" class="btn btn-error" data-toggle="modal" data-target="#addInvestigacionModal" ng-click="editarInvestigacion(actividadInvestigacion)"><i class="fa  fa-pencil"></i></button>
 								<button type="submit" class="btn btn-danger"><i class="fa  fa-minus"></i></button>
 							  
 							  </td>
@@ -67,7 +67,7 @@
 							<td>{{actividadInvestigacion.H_S}}</td>
 							<td>{{actividadInvestigacion.H_SM}}</td>
 							<td>
-								<button type="submit" class="btn btn-error"><i class="fa  fa-pencil"></i></button>
+								<button type="submit" class="btn btn-error" data-toggle="modal" data-target="#addInvestigacionModal" ng-click="editarInvestigacion(actividadInvestigacion)"><i class="fa  fa-pencil"></i></button>
 								<button type="submit" class="btn btn-danger"><i class="fa  fa-minus"></i></button>
 							</td>
 							
@@ -103,7 +103,7 @@
 							<td>{{actividadInvestigacion.H_S}}</td>
 							<td>{{actividadInvestigacion.H_SM}}</td>
 							<td>
-								<button type="submit" class="btn btn-error"><i class="fa  fa-pencil"></i></button>
+								<button type="submit" class="btn btn-error" data-toggle="modal" data-target="#addInvestigacionModal"  ng-click="editarInvestigacion(actividadInvestigacion)" ><i class="fa  fa-pencil"></i></button>
 								<button type="submit" class="btn btn-danger"><i class="fa  fa-minus"></i></button>
 							</td>
 							
@@ -119,7 +119,7 @@
 
 
 		<div class="box-footer clearfix">
-			<button type="submit" data-toggle="modal" data-target="#addInvestigacionModal" class="btn btn-success pull-right">Agregar</button>
+			<button type="submit" data-toggle="modal" data-target="#addInvestigacionModal" class="btn btn-success pull-right" ng-click="agregarInvestigacion()">Agregar</button>
 		</div>
 		
 	</div>
