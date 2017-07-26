@@ -22,15 +22,15 @@
 					</tr>
 				</thead>
 				<tbody>
-
-					<tr role="row" class="odd">
-						<td >COORDINADOR</td>
-						<td>CURSO ASCENSO ESCALAFÓN DOCENTE</td>
-						<td>acuerdo No 3256</td>
-						<td>4</td>
-						<td>34</td>
+					<tr role="row" class="odd" ng-repeat=" actividadProyeccionSocial in actividadesProyeccionSocial">
+						<td>{{actividadProyeccionSocial.cargo_representacion}}</td>
+						<td>{{actividadProyeccionSocial.nombre_proyecto}}</td>
+						<td>{{actividadProyeccionSocial.acuerdo_aprobacion}}</td>
+						<td>{{actividadProyeccionSocial.H_S}}</td>
+						<td>{{actividadProyeccionSocial.H_SM}}</td>
 						<td > 
-								<button type="submit" class="btn btn-error"><i class="fa  fa-pencil"></i></button> 								<button type="submit" class="btn btn-danger"><i class="fa  fa-minus"></i></button>
+								<button type="submit" class="btn btn-error" data-toggle="modal" data-target="#addInteraccionSocialModal"   ng-click="editarProyeccionSocial(actividadProyeccionSocial)" ><i class="fa  fa-pencil"></i></button> 	
+								<button type="submit" class="btn btn-danger"><i class="fa  fa-minus"></i></button>
 						</td>
 						
 					</tr>

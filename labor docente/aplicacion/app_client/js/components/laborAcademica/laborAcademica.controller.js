@@ -107,6 +107,17 @@
                 H_SM:36,
             },
         ]
+
+        $scope.actividadesProyeccionSocial = [
+            {
+                cargo_representacion:"COORDINADOR",
+                nombre_proyecto:"CURSO ASCENSO ESCALAFÓN DOCENTE",
+                acuerdo_aprobacion:"acuerdo No 3256",
+                H_S:2,
+                H_SM:36,
+            }
+        ]
+
        // $scope.modalAsignatura ={tipo:1,}
 
         /**
@@ -201,6 +212,21 @@
 
             }
 
+        };
+
+
+        //editarProyeccionSocial
+         /**
+         * @ngdoc function
+         * @name editarProyeccionSocial
+         * @methodOf module.proyeccionSocial
+         * @description abre el modal y edita los campos para proyeccion social
+         */
+        $scope.editarProyeccionSocial = (proyeccionSocial) => {
+            $scope.modalInvestigacion  =proyeccionSocial;
+            $scope.modalInvestigacion.agregar = false;
+            console.log($scope.modalInvestigacion)
+            
         };
 
         /**
