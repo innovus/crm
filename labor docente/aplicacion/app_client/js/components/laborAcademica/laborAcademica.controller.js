@@ -41,6 +41,7 @@
         $scope.periodo_tipo ="Semestre";
         $scope.laborDocencia ={};
         $scope.modalInvestigacion = modalLimpio;
+        investigacionEditar = {};
         /**
          * contiente los tipos de investigacion que tiene una actividad de ivestigacion
          * codigo y el detalle
@@ -191,9 +192,10 @@
          * @methodOf module.laborAcademica
          * @description abre el modal y prepara para agregar una nueva investigacion al vector
          */
-        $scope.editarInvestigacion = (index) => {
+        $scope.editarInvestigacion = (investigacion) => {
+            investigacionEditar = investigacion;
+            index =  $scope.actividadesInvestigacion.indexOf(investigacion);
             $scope.modalInvestigacion  = $scope.actividadesInvestigacion[index];
-
             $scope.modalInvestigacion.agregar = false;
             console.log(index)
             
@@ -210,6 +212,10 @@
                 $scope.actividadesInvestigacion.push($scope.modalInvestigacion);
 
             }else{
+                index =  $scope.actividadesInvestigacion.indexOf(investigacionEditar);
+                $scope.actividadesInvestigacion[index] = $scope.modalInvestigacion;
+
+
                 console.log("editar");
 
             }
