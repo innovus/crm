@@ -33,7 +33,8 @@
          */
         $scope.titulo = {
             "titulo": "Labor Academica",
-            "subtitulo": pasarDatos.data.nombre_completo
+            "subtitulo": pasarDatos.data.nombre_completo,
+            "vinculacion":  pasarDatos.data.vinculacion
         }
         modalLimpio = {tipo:"1",nivel_formacion:"1"}
 
