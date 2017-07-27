@@ -23,9 +23,9 @@
         .module('laborAcademica')
         .controller('laborAcademicaCtrl', laborAcademicaCtrl);
 
-    laborAcademicaCtrl.$inject = ['$scope', '$sce', '$compile', '$rootScope', 'autenticacion', '$location', '$timeout', 'SweetAlert', '$q','MensajesService' ];
+    laborAcademicaCtrl.$inject = ['$scope', 'pasarDatos', '$compile', '$rootScope', 'autenticacion', '$location', '$timeout', 'SweetAlert', '$q','MensajesService' ];
 
-    function laborAcademicaCtrl($scope, $sce, $compile, $rootScope, autenticacion, $location, $timeout, SweetAlert, $q , MensajesService) {
+    function laborAcademicaCtrl($scope, pasarDatos, $compile, $rootScope, autenticacion, $location, $timeout, SweetAlert, $q , MensajesService) {
 
         /**
          * esta variable representa el titulo y el subtitulo de la pagina actual
@@ -33,7 +33,7 @@
          */
         $scope.titulo = {
             "titulo": "Labor Academica",
-            "subtitulo": "Juan carlos Pantoja"
+            "subtitulo": pasarDatos.data.nombre_completo
         }
         modalLimpio = {tipo:"1",nivel_formacion:"1"}
 

@@ -1,0 +1,82 @@
+<navigation></navigation>
+
+<div class="content-wrapper">
+    <div container>
+
+        <section class="content-header">
+            <h1>
+                {{titulo.titulo}}
+                <small>{{ titulo.subtitulo }}</small>
+            </h1>
+            <br>
+        </section>
+
+        <section class="content">
+
+            <div class="row">
+                <div class="col-xs-12">
+                  <div class="box">
+                    <div class="box-header">
+                      <h3 class="box-title">Docentes</h3>
+
+                      <div class="box-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                          <input type="text" name="table_search" class="form-control pull-right" placeholder="Search" ng-model="search">
+
+                          <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                          </div>
+                        </div>
+                      </div> <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                      <table class="table table-hover">
+                        <tbody>
+                        <tr>
+                          <th>Identificacion</th>
+                          <th>Nombre Completo</th>
+                          <th>Departamento</th>
+                          <th>Vinculacion</th>
+                          <th>Seleccionar</th>
+                          
+                        </tr>
+                        <tr ng-repeat="docente in docentes | filter: search">
+                          <td>{{docente.identificacion}}</td>
+                          <td>{{docente.nombre_completo}}</td>
+                          <td>{{docente.nom_dep}}</td>
+                          <td>{{docente.vinculacion}}</td>
+                          <td><button type="button" class="btn btn-primary" ng-click="seleccionarDocente(docente)" data-dismiss="modal" >Seleccionar</button></td>
+                        </tr>
+                        
+                      </tbody></table>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer clearfix">
+                      <ul class="pagination pagination-sm no-margin pull-right">
+                        <li><a href="#">«</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">»</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- /.box -->
+                </div>
+            </div>
+
+           
+
+        </section>
+
+    </div>
+</div>
+
+<!-- Modals -->
+
+<!-- End Modals -->
+
+<footer-generic>
+</footer-generic>
